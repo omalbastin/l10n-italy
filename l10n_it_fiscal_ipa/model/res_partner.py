@@ -6,10 +6,10 @@
 #
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #
-from openerp.osv import fields, orm
+from openerp import fields, models
 
 
-class ResPartner(orm.Model):
+class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     ipa_code = fields.Char(string='IPA Code')
