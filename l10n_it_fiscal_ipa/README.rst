@@ -1,6 +1,6 @@
 |Maturity| |Build Status| |license gpl| |Coverage Status| |Codecov Status| |OCA project| |Tech Doc| |Help| |Try Me|
 
-.. |icon| image:: https://raw.githubusercontent.com/zeroincombenze/l10n-italy/7.0/l10n_it_fiscal_ipa/static/src/img/icon.png
+.. |icon| image:: https://raw.githubusercontent.com/Odoo-Italia-Associazione/l10n-italy/8.0/l10n_it_fiscal_ipa/static/description/icon.png
 
 ==========================
 |icon| IPA Code (IndicePA)
@@ -14,7 +14,9 @@
 IPA Code
 =========
 
-This module adds IPA (IndicePA) code and Recipient Code fields to partner
+This module adds IPA (IndicePA) code and Recipient Code fields to partner,
+used by Italian Electronic Invoice.
+
 http://www.indicepa.gov.it
 
 
@@ -25,10 +27,14 @@ http://www.indicepa.gov.it
 Codice IPA (IndicePA)
 ======================
 
-Questo modulo permette di inserire il codice IPA (IndicePA) e il Codice Destinatario
+Questo modulo permette l'inseriento del codice IPA (IndicePA) e del Codice Destinatario
 nell'anagrafica cliente.
 
+Questi dati sono indispensabili per la gestione della Fattura Elettronica B2B e
+per la FatturaPA.
+
 http://www.indicepa.gov.it
+
 
 
 Features / Funzioni
@@ -39,7 +45,7 @@ Features / Funzioni
 +-------------------------------------------------+----------+----------------------------------------------+
 | Parter: IPA Code / Codice IPA                   | |check|  | Per FatturaPA                                |
 +-------------------------------------------------+----------+----------------------------------------------+
-| Partner: Destination Code / Codice Destinatario | |check|  | EInvoice / Per Fattura Elettronica           |
+| Partner: Recipient Code / Codice Destinatario   | |check|  | EInvoice / Per Fattura Elettronica B2B       |
 +-------------------------------------------------+----------+----------------------------------------------+
 
 
@@ -54,8 +60,9 @@ OCA Differences / Differenze da OCA
 +--------------------------------------+-------------+-------------------+--------------------------------+
 | IPA Code                             | This Module | This Module       |                                |
 +--------------------------------------+-------------+-------------------+--------------------------------+
-| Recipient Code /C odice Destinatario | This Module | l10n_it_fatturapa | |warning| Different deployment |
+| Recipient Code / Codice Destinatario | This Module | l10n_it_fatturapa | |warning| Different deployment |
 +--------------------------------------+-------------+-------------------+--------------------------------+
+
 
 
 
@@ -70,7 +77,7 @@ These instruction are just an example to remember what you have to do.
 Installation is based on `Zeroincombenze Tools <https://github.com/zeroincombenze/tools>`__
 Deployment is ODOO_DIR/REPOSITORY_DIR/MODULE_DIR where:
 
-| ODOO_DIR is root Odoo directory, i.e. /opt/odoo/7.0
+| ODOO_DIR is root Odoo directory, i.e. /opt/odoo/8.0
 | REPOSITORY_DIR is downloaded git repository directory, currently is: l10n-italy
 | MODULE_DIR is module directory, currently is: l10n_it_fiscal_ipa
 | MYDB is the database name
@@ -78,15 +85,15 @@ Deployment is ODOO_DIR/REPOSITORY_DIR/MODULE_DIR where:
 
 ::
 
+    pip install unidecode
     pip install codicefiscale
     pip install pyxb==1.2.4
-    pip install unidecode
     cd $HOME
     git clone https://github.com/zeroincombenze/tools.git
     cd ./tools
     ./install_tools.sh -p
     export PATH=$HOME/dev:$PATH
-    odoo_install_repository l10n-italy -b 7.0 -O zero
+    odoo_install_repository l10n-italy -b 8.0 -O oia
 
 
 From UI: go to:
@@ -98,7 +105,7 @@ From UI: go to:
 |warning| If your Odoo instance crashes, you can do following instruction
 to recover installation status:
 
-``run_odoo_debug 7.0 -um l10n_it_fiscal_ipa -s -d MYDB``
+``run_odoo_debug 8.0 -um l10n_it_fiscal_ipa -s -d MYDB``
 
 
 
@@ -122,7 +129,7 @@ Issue Tracker
 
 Bug reports are welcome! You can use the issue tracker to report bugs,
 and/or submit pull requests on `GitHub Issues
-<https://github.com/zeroincombenze/l10n-italy/issues>`_.
+<https://github.com/Odoo-Italia-Associazione/l10n-italy/issues>`_.
 
 In case of trouble, please check there if your issue has already been reported.
 
@@ -148,7 +155,7 @@ Authors
 
 * `KTec S.r.l. <https://www.ktec.it/>`__
 * `Agile Business Group sagl <https://www.agilebg.com/>`__
-* `SHS-AV s.r.l. <https://www.zeroincombenze.it/`__
+* `SHS-AV s.r.l. <https://www.zeroincombenze.it/>`__
 
 Contributors
 -------------
@@ -180,42 +187,49 @@ To contribute to this module, please visit https://odoo-italia.org/.
 is a nonprofit organization whose mission is to support
 the collaborative development of Odoo features and promote its widespread use.
 
-**zeroincombenze®** is a trademark of `SHS-AV s.r.l. <http://www.shs-av.com/>`__
-which distributes and promotes **Odoo** ready-to-use on own cloud infrastructure.
-`Zeroincombenze® distribution of Odoo <http://wiki.zeroincombenze.org/en/Odoo>`__
-is mainly designed for Italian law and markeplace.
+**Odoo Italia Associazione**, or the `Associazione Odoo Italia <https://www.odoo-italia.org/>`__
+is the nonprofit Italian Community Association whose mission
+is to support the collaborative development of Odoo designed for Italian law and markeplace.
+Since 2017 Odoo Italia Associazione issues modules for Italian localization not developed by OCA
+or available only with Odoo Proprietary License.
+Odoo Italia Associazione distributes code under `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__
+or `LGPL <https://www.gnu.org/licenses/lgpl.html>`__ free license.
 
-Users can download from `Zeroincombenze® distribution <https://github.com/zeroincombenze/OCB>`__
-and deploy on local server.
+`Odoo Italia Associazione <https://www.odoo-italia.org/>`__ è un'Associazione senza fine di lucro
+che dal 2017 rilascia moduli per la localizzazione italiana non sviluppati da OCA
+o disponibili solo con `Odoo Proprietary License <https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html>`__
+
+Odoo Italia Associazione distribuisce il codice esclusivamente con licenza `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__
+o `LGPL <https://www.gnu.org/licenses/lgpl.html>`__
 
 
 
 .. |Maturity| image:: https://img.shields.io/badge/maturity-Alfa-red.png
     :target: https://odoo-community.org/page/development-status
     :alt: Alfa
-.. |Build Status| image:: https://travis-ci.org/zeroincombenze/l10n-italy.svg?branch=7.0
-    :target: https://travis-ci.org/zeroincombenze/l10n-italy
+.. |Build Status| image:: https://travis-ci.org/Odoo-Italia-Associazione/l10n-italy.svg?branch=8.0
+    :target: https://travis-ci.org/Odoo-Italia-Associazione/l10n-italy
     :alt: github.com
 .. |license gpl| image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |Coverage Status| image:: https://coveralls.io/repos/github/zeroincombenze/l10n-italy/badge.svg?branch=7.0
-    :target: https://coveralls.io/github/zeroincombenze/l10n-italy?branch=7.0
+.. |Coverage Status| image:: https://coveralls.io/repos/github/Odoo-Italia-Associazione/l10n-italy/badge.svg?branch=8.0
+    :target: https://coveralls.io/github/Odoo-Italia-Associazione/l10n-italy?branch=8.0
     :alt: Coverage
-.. |Codecov Status| image:: https://codecov.io/gh/zeroincombenze/l10n-italy/branch/7.0/graph/badge.svg
-    :target: https://codecov.io/gh/zeroincombenze/l10n-italy/branch/7.0
+.. |Codecov Status| image:: https://codecov.io/gh/Odoo-Italia-Associazione/l10n-italy/branch/8.0/graph/badge.svg
+    :target: https://codecov.io/gh/Odoo-Italia-Associazione/l10n-italy/branch/8.0
     :alt: Codecov
-.. |OCA project| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-oca-7.svg
-    :target: https://github.com/OCA/l10n-italy/tree/7.0
+.. |OCA project| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-oca-8.svg
+    :target: https://github.com/OCA/l10n-italy/tree/8.0
     :alt: OCA
-.. |Tech Doc| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-docs-7.svg
-    :target: http://wiki.zeroincombenze.org/en/Odoo/7.0/dev
+.. |Tech Doc| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-docs-8.svg
+    :target: http://wiki.zeroincombenze.org/en/Odoo/8.0/dev
     :alt: Technical Documentation
-.. |Help| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-help-7.svg
-    :target: http://wiki.zeroincombenze.org/it/Odoo/7.0/man
+.. |Help| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-help-8.svg
+    :target: http://wiki.zeroincombenze.org/it/Odoo/8.0/man
     :alt: Technical Documentation
-.. |Try Me| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-try-it-7.svg
-    :target: https://erp7.zeroincombenze.it
+.. |Try Me| image:: http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-try-it-8.svg
+    :target: https://odoo8.odoo-italia.org
     :alt: Try Me
 .. |Odoo Italia Associazione| image:: https://www.odoo-italia.org/images/Immagini/Odoo%20Italia%20-%20126x56.png
    :target: https://odoo-italia.org

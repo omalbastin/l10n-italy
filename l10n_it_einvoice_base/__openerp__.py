@@ -40,7 +40,7 @@
         'demo/res_partner.xml',
         'demo/account_invoice_fatturapa.xml'
     ],
-    "installable": True,
+    "installable": False,
     'external_dependencies': {
         'python': ['pyxb'],
     }

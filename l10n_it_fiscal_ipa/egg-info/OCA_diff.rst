@@ -8,5 +8,5 @@ OCA Differences / Differenze da OCA
 +--------------------------------------+-------------+-------------------+--------------------------------+
 | IPA Code                             | This Module | This Module       |                                |
 +--------------------------------------+-------------+-------------------+--------------------------------+
-| Recipient Code /C odice Destinatario | This Module | l10n_it_fatturapa | |warning| Different deployment |
+| Recipient Code / Codice Destinatario | This Module | l10n_it_fatturapa | |warning| Different deployment |
 +--------------------------------------+-------------+-------------------+--------------------------------+
