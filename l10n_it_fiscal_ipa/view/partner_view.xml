@@ -11,8 +11,13 @@
                 <page string="Tax Authority" col="4" name="tax_authority"
                       attrs="{'invisible': [('is_company','=',False),('parent_id','!=',False)]}">
                     <group>
-                        <field name="ipa_code" placeholder="IPA123" />
+                        <field name="electronic_invoice_subjected" />
                         <field name="codice_destinatario" placeholder="0000000" />
+                        <field name="pec_destinatario" placeholder="nome@pec.it" />
+                        <field name="is_pa" />
+                        <field name="ipa_code" placeholder="IPA123" />
+                        <field name="eori_code"/>
+                        <field name="license_number"/>
                     </group>
                 </page>
             </xpath>
@@ -21,3 +26,4 @@
 
 </data>
 </openerp>
+

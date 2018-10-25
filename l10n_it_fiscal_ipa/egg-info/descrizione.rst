@@ -1,7 +1,7 @@
 Codice IPA (IndicePA)
 =====================
 
-Questo modulo permette l'inseriento del codice IPA (IndicePA) e del Codice Destinatario
+Questo modulo permette l'inserimento del codice IPA (IndicePA) e del Codice Destinatario
 nell'anagrafica cliente.
 
 Questi dati sono indispensabili per la gestione della Fattura Elettronica B2B e

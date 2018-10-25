@@ -38,11 +38,13 @@ class TestAdeCodiceCarica(test_common.SingleTransactionCase):
 
     def search612(self, model, *args):
         """Search record ids - Syntax search(model, *args)
-        Warning! On Odoo 7.0 result may fail!"""
+        Warning! Do not use with Odoo 7.0: result may fails!"""
         return self.registry(model).search(self.cr, self.uid, *args)
 
     def browse612(self, model, id):
-        return self.registry(model).browse(self.cr, self.uid, id)
+        if int(release.major_version.split('.')[0]) < 8:
+            return self.registry(model).browse(self.cr, self.uid, id)
+        return self.env[model].browse(id)
 
     def write612(self, model, id, values):
         """Write existent record [7.0]"""

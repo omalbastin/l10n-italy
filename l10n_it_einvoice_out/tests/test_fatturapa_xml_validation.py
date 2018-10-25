@@ -1,34 +1,25 @@
 # -*- coding: utf-8 -*-
-##############################################################################
 #
-#    Copyright (C) 2014 Davide Corio <davide.corio@lsweb.it>
-#    Copyright (C) 2015 Lorenzo Battistini <lorenzo.battistini@agilebg.com>
+# Copyright 2014    Davide Corio <davide.corio@lsweb.it>
+# Copyright 2015    Lorenzo Battistini <lorenzo.battistini@agilebg.com>
+# Copyright 2018-19 - SHS-AV s.r.l. <https://www.zeroincombenze.it>
+# Copyright 2018-19 - Odoo Italia Associazione <https://www.odoo-italia.org>
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
 
 import base64
-import tempfile
-import openerp.release as release
-from openerp import workflow
-import openerp.tests.common as test_common
-from openerp.modules.module import get_module_resource
-from datetime import datetime
-from lxml import etree
-import shutil
 import os
+import shutil
+import tempfile
+from datetime import datetime
+
+from lxml import etree
+
+import openerp.release as release
+import openerp.tests.common as test_common
+from openerp import workflow
+from openerp.modules.module import get_module_resource
 
 
 class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
@@ -71,6 +62,17 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
                                              values)
         return self.env612(model).create(values).id
 
+    def workflow612(self, model, action, id):
+        if int(release.major_version.split('.')[0]) < 8:
+            wf_service = netsvc.LocalService("workflow")
+            wf_service.trg_validate(
+                self.uid, model, id, action, self.cr
+            )
+        else:
+            workflow.trg_validate(
+                self.uid, model, id, action, self.cr
+            )
+
     def getFilePath(self, filepath):
         with open(filepath) as test_data:
             with tempfile.TemporaryFile() as out:
@@ -80,7 +82,7 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
 
     def getAttacment(self, name):
         path = get_module_resource(
-            'l10n_it_fatturapa_out',
+            'l10n_it_einvoice_out',
             'tests', 'data', 'attach_base.pdf'
         )
         currDir = os.path.dirname(path)
@@ -90,7 +92,7 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
 
     def getFile(self, filename):
         path = get_module_resource(
-            'l10n_it_fatturapa_out', 'tests', 'data', filename)
+            'l10n_it_einvoice_out', 'tests', 'data', filename)
         return self.getFilePath(path)
 
     def setUp(self):
@@ -99,7 +101,7 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
         self.data_model = self.registry('ir.model.data')
         self.attach_model = self.registry('fatturapa.attachment.out')
         self.invoice_model = self.registry('account.invoice')
-        self.company_model = self.registry('res.companyany')
+        self.company_model = self.registry('res.company')
         self.fatturapa_attach = self.registry('fatturapa.attachments')
         self.context = {}
         self.maxDiff = None
@@ -109,7 +111,7 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
             'account.miscellaneous_journal')
         self.company.email = 'info@yourcompany.com'
 
-    def AttachFileAtInvoice(self, InvoiceId, filename):
+    def attachFileToInvoice(self, InvoiceId, filename):
         self.fatturapa_attach.create(
             self.cr, self.uid,
             {
@@ -179,7 +181,7 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
         cr, uid = self.cr, self.uid
         seq_pool = self.registry('ir.sequence')
         seq_id = self.data_model.get_object_reference(
-            cr, uid, 'l10n_it_fatturapa', 'seq_fatturapa')
+            cr, uid, 'l10n_it_einvoice_base', 'seq_fatturapa')
         seq_pool.write(cr, uid, [seq_id[1]], {
             'implementation': 'no_gap',
             'number_next_actual': file_number,
@@ -203,20 +205,17 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
         cr, uid = self.cr, self.uid
 
         invoice_id = self.data_model.get_object_reference(
-            cr, uid, 'l10n_it_fatturapa', invoice_xml_id)
+            cr, uid, 'l10n_it_einvoice_base', invoice_xml_id)
         if invoice_id:
             invoice_id = invoice_id and invoice_id[1] or False
         # this  write updates context with
         # fiscalyear_id
         if attach:
-            self.AttachFileAtInvoice(invoice_id, 'test1.pdf')
-            self.AttachFileAtInvoice(invoice_id, 'test2.pdf')
+            self.attachFileToInvoice(invoice_id, 'test1.pdf')
+            self.attachFileToInvoice(invoice_id, 'test2.pdf')
         self.invoice_model.write(
             cr, uid, invoice_id, {}, context=self.context)
-        workflow.trg_validate(
-            uid, 'account.invoice', invoice_id, 'invoice_open', cr
-        )
-        return invoice_id
+        self.workflow612('account.invoice', 'invoice_open', invoice_id)
 
     def run_wizard(self, invoice_id):
         cr, uid = self.cr, self.uid
@@ -230,12 +229,12 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
         test_fatt_content = test_fatt_data.decode('base64')
         test_fatt = etree.fromstring(test_fatt_content, parser)
         xml = etree.fromstring(xml_content, parser)
-        fd = open('/opt/odoo/tmp/tmp_test_fatt.log', 'w')
-        fd.write(etree.tostring(test_fatt))
-        fd.close()
-        fd = open('/opt/odoo/tmp/tmp_test_xml.log', 'w')
-        fd.write(etree.tostring(xml))
-        fd.close()
+        # fd = open('/opt/odoo/tmp/tmp_test_fatt.log', 'w')       # debug
+        # fd.write(etree.tostring(test_fatt))                     # debug
+        # fd.close()                                              # debug
+        # fd = open('/opt/odoo/tmp/tmp_test_xml.log', 'w')        # debug
+        # fd.write(etree.tostring(xml))                           # debug
+        # fd.close()                                              # debug
         self.assertEqual(etree.tostring(test_fatt), etree.tostring(xml))
 
     def test_0_xml_export(self):

@@ -25,22 +25,22 @@
         'l10n_it_fiscal_ipa',
         'l10n_it_rea',
         'base_iban',
+        'l10n_it_fiscal_payment_term',
     ],
     "data": [
+        'security/ir.model.access.csv',
         'data/fatturapa_data.xml',
         'data/welfare.fund.type.csv',
         'views/account_view.xml',
         'views/company_view.xml',
-        'views/partner_view.xml',
         # 'views/account_tax_view.xml',
-        'security/ir.model.access.csv',
     ],
     "demo": [
         'demo/account_tax.xml',
         'demo/res_partner.xml',
         'demo/account_invoice_fatturapa.xml'
     ],
-    "installable": False,
+    "installable": True,
     'external_dependencies': {
         'python': ['pyxb'],
     }

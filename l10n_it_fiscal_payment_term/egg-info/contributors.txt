@@ -1,0 +1,4 @@
+* Davide Corio
+* Lorenzo Battistini <lorenzo.battistini@agilebg.com>
+* Alessio Gerace <alessio.gerace@agilebg.com>
+* Antonio M. Vigliotti <antoniomaria.vigliotti@gmail.com>

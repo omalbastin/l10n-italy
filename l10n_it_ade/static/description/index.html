@@ -1,58 +1,60 @@
+
 <section class="oe_container">
     <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan" style="color:#162832;">Tax Authority Definitions/Definizioni Agenzia delle Entrate</h2>
-        <div class="oe_span6 text-center">
-            <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/en_US.png" alt="English"/>
-            <p class="oe_mt16" align="justify">This module has no any specific function for End-user.
-It contains various tax data for Italian account. Inside there are xml schema files used by FatturaPA, eInvoice and VAT settlement.
-            </p><p>
-This module requires PyXB 1.2.4
-http://pyxb.sourceforge.net/
-            </p>
-        </div>
-        <div class="oe_span6 text-center">
-            <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/it_IT.png" alt="Italiano"/>
-            <p class="oe_mt16" align="justify">Questo modulo non ha funzioni specifiche per l'utente finale.
-Contiene dati e definizioni per la fiscalit&agrave; italiana.
-All'interno sono presenti gli schemi xml nei formati stabiliti dall'Agenzia
-delle Entrate usati da FatturaPA, fattura elettronica, Liquidazione IVA
- elettronica e Comunicazione IVA.
-            </p><p align="justify">
-Attenzione! Questo modulo &egrave; incompatibile con i seguenti moduli OCA:
-            </p><p align="justify">
-l10n_it_fatturapa versioni [7-11].0.2.0.0
-            </p><p align="justify">
-Dallo schema di definizione dei file xml dell'Agenzia delle Entrate, pubblicato
-con urn:www.agenziaentrate.gov.it:specificheTecniche dipendono tutti i file
-xml da inviare all'AdE; se moduli diversi richiamano lo stesso schema
-dell'Agenzia delle Entrate nasce un conflitto che genera l'errore:
-</p><p align="justify">
-<b>name CryptoBinary used for multiple values in typeBinding</b>
-            </p><p align="justify">
-Tutti i moduli che generano file xml destinati all'Agenzia delle Entrate <b>devono</b>
-dipendere da questo modulo. Questo &egrave; il motivo del conflitto con i moduli OCA.
-            </p><p align="justify">
-Per maggiori informazioni visitare il sito www.odoo-italia.org o contattare
-l'autore.
-            </p>
-        </div>
+        <h2 class="oe_slogan" style="color:#162832;">Definizioni di Base Agenzia delle Entrate / Definizioni Agenzia delle Entrate</h2>
     </div>
-    <div class="oe_row oe_spaced">
-        <h3 class="oe_slogan" style="color:#162832;">Schemi</h3>
-        <div class="oe_span6 text-center">
-            <p align="justify">
-* Liquidazione IVA elettronica versione 1.0
-            </p>
-        </div>
-        <div class="oe_span6 text-center">
-            <p align="justify">
-* Comunicazione clienti e fornitori (spesometro 2018) versione 2.1
-            </p><p align="justify">
-* FatturaPA versione 1.2
-            </p>
-        </div>
+    <div class="oe_span6 text-center">
+        <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/en_US.png" alt="English"/>
+        <p class="oe_mt16" align="justify"><p align="justify">
+This module has no specific function for End-user.
+</p><p align="justify">
+It defines the structures by Italian Tax Authority to manage
+all fiscal communications.
+Inside there are xml schema files used by FatturaPA, EInvoice and VAT settlement.
+</p><p align="justify">
+This module requires <a href="http://pyxb.sourceforge.net/">PyXB 1.2.4</a>
+</p></p>
+    </div>
+    <div class="oe_span6 text-center">
+        <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/it_IT.png" alt="Italiano"/>
+        <p class="oe_mt16" align="justify"><p align="justify">
+Questo modulo non ha funzioni specifiche per l'utente finale.
+Contiene dati e definizioni stabilite dall'Agenzia delle Entrate
+All'interno sono presenti gli schemi xml usati da FatturaPA,
+Fattura Elettronica B2B, Liquidazione IVA elettronica e Comunicazione IVA.
+</p><p align="justify">
+|<span class="fa fa-info-circle" style="color:blue"/>| Questo modulo &#232; incompatibile con alcuni moduli OCA.
+</p><p align="justify">
+<span class="fa fa-exclamation-triangle" style="color:orange"/> Lo schema di definizione dei file xml, pubblicato
+con urn:www.agenziaentrate.gov.it:specificheTecniche &#232; base per tutti i file
+xml dell'Agenzia delle Entrate; come conseguenza nasce un conflitto tra
+moduli diversi che riferiscono allo schema dell'Agenzia delle Entrate,
+segnalato dall'errore:
+</p><p align="justify">
+<span class="fa fa-exclamation" style="color:orange"/> name CryptoBinary used for multiple values in typeBinding
+</p><p align="justify">
+Tutti i moduli della localizzazione italiana che generano file xml dipendenti
+dallo schema dell'Agenzia delle Entrate devono dichiare il modulo
+<a href="https://github.com/zeroincombenze/l10n-italy/tree/8.0/l10n_it_ade">l10n_it_ade</a> 
+</p></p>
     </div>
 </section>
 
-<section class="oe_container oe_separator">
+<section class="oe_container oe_separator"/>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6" align="left">
+            <p class="oe_mt16">Authors / Autori:</p>
+            <p class="oe_mt16"><ul>
+<li>SHS-AV s.r.l. &lt;https://www.zeroincombenze.it/&gt;</li>
+</ul></p>
+        </div>
+        <div class="oe_span6" align="left">
+            <p class="oe_mt16">Contributors / Contributi:</p>
+            <p class="oe_mt16"><ul>
+<li>Antonio Maria Vigliotti &lt;antoniomaria.vigliotti@gmail.com&gt;</li>
+</ul></p>
+        </div>
+    </div>
 </section>

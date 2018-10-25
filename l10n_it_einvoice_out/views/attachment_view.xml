@@ -6,7 +6,7 @@
             <field name="name">fatturapa.attachment.out.form</field>
             <field name="model">fatturapa.attachment.out</field>
             <field name="arch" type="xml">
-                <form string="Export FatturaPA" version="7.0">
+                <form string="Export EInvoice" version="7.0">
                     <div>
                         <field name="datas" filename="datas_fname" />
                         <field name="datas_fname"/>
@@ -39,7 +39,7 @@
         </record>
 
         <menuitem action="action_fatturapa_attachment"
-            parent="l10n_it_fatturapa.menu_fattura_pa_receivables"
+            parent="l10n_it_einvoice_base.menu_fattura_pa_receivables"
             name="FatturaPA Export Files"
             id="fatturapa_attachment_menu"/>
 
