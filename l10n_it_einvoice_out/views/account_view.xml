@@ -1,61 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+<data>
 
-        <record id="view_invoice_form_fatturapa" model="ir.ui.view">
-            <field name="name">account.invoice.fatturapa</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="account.invoice_form"></field>
-            <field name="arch" type="xml">
-                <xpath expr="//notebook" position="inside">
-                    <page string="Related Documents ">
-                        <group string="Related Documents">
-                            <field name="related_documents" nolabel="1">
-                                <tree editable="bottom" string="Related Documents">
-                                    <field name="type"></field>
-                                    <field name="name"></field>
-                                    <field name="lineRef" readonly="1"></field>
-                                    <field name="date"></field>
-                                    <field name="numitem"></field>
-                                    <field name="code"></field>
-                                    <field name="cig"></field>
-                                    <field name="cup"></field>
-                                </tree>
-                            </field>
+    <record id="view_invoice_form_fatturapa" model="ir.ui.view">
+        <field name="name">account.invoice.fatturapa</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Related Documents ">
+                    <group string="Related Documents">
+                        <field name="related_documents" nolabel="1">
+                            <tree editable="bottom" string="Related Documents">
+                                <field name="type"></field>
+                                <field name="name"></field>
+                                <field name="lineRef" readonly="1"></field>
+                                <field name="date"></field>
+                                <field name="numitem"></field>
+                                <field name="code"></field>
+                                <field name="cig"></field>
+                                <field name="cup"></field>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+                <page string="FatturaPA">
+                    <group>
+                        <group string="Fiscal">
+                            <field name="invoice_type_id"></field>
                         </group>
-                    </page>
-                    <page string="FatturaPA">
-                        <group>
-                            <group string="Results">
-                                <field name="fatturapa_attachment_out_id"></field>
-                            </group>
+                        <group string="Results">
+                            <field name="fatturapa_attachment_out_id"></field>
                         </group>
-                    </page>
-                    <page string="FatturaPA attachments">
-                        <group string="Attachments">
-                            <field name="fatturapa_doc_attachments" nolabel="1" >
-                                <tree string="Attachments">
-                                    <field name="ir_attachment_id"></field>
-                                    <field name="datas_fname"></field>
-                                    <field name="description"></field>
-                                </tree>
-                                <form string="Attachments">
+                    </group>
+                </page>
+                <page string="FatturaPA attachments">
+                    <group string="Attachments">
+                        <field name="fatturapa_doc_attachments" nolabel="1" >
+                            <tree string="Attachments">
+                                <field name="ir_attachment_id"></field>
+                                <field name="datas_fname"></field>
+                                <field name="description"></field>
+                            </tree>
+                            <form string="Attachments">
+                                <group>
                                     <group>
-                                        <group>
-                                            <field name="name"></field>
-                                            <field name="description"></field>
-                                        </group>
-                                        <group>
-                                                <field name="datas" filename="datas_fname" />
-                                            <field name="datas_fname"/>
-                                        </group>
+                                        <field name="name"></field>
+                                        <field name="description"></field>
                                     </group>
-                                </form>
-                            </field>
-                        </group>
-                    </page>
-                </xpath>
-            </field>
-        </record>
-    </data>
+                                    <group>
+                                        <field name="datas" filename="datas_fname" />
+                                        <field name="datas_fname"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_filter_fatturapa" model="ir.ui.view">
+        <field name="name">account.invoice.select.fatturapa</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"></field>
+        <field name="arch" type="xml">
+            <filter name="unpaid" position="after">
+                <filter name="einvoice_no" string="FE da emettere" domain="[('fatturapa_attachment_out_id','=',False)]"
+                        help="Fattura B2B o FatturaPA non emesse; da inviare ad Agenzia delle Entrate"/>
+                <filter name="einvoice_si" string="FE emessa" domain="[('fatturapa_attachment_out_id','!=',False)]"
+                        help="Fattura emessa (e inviata) ad Agenzia delle Entrate"/>
+            </filter>
+        </field>
+    </record>
+
+</data>
 </openerp>

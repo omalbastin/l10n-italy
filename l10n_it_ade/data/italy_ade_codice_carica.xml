@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data noupdate="0">
+
     <record model="italy.ade.codice.carica" id="1">
         <field name="code">1</field>
         <field name="name">Legale rappresentante, socio amministratore</field>
@@ -107,6 +108,7 @@
         <field name="help">Commissario liquidatore di una pubblica amministrazione</field>
         <field name="active">1</field>
     </record>
+
 </data>
 </openerp>
 

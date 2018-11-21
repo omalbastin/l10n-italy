@@ -1,36 +1,87 @@
+
 <section class="oe_container">
     <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan" style="color:#162832;">Base Localization/Localizzazione Italiana Base</h2>
-        <div class="oe_span6 text-center">
-            <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/en_US.png" alt="English"/>
-            <p class="oe_mt16" align="justify">This adds:
-            </p><p align="justify">
-- Italian cities
-            </p><p align="justify">
-- Titles
-            </p><p align="justify">
-- Provinces (districts) and Regions
+        <h2 class="oe_slogan" style="color:#162832;">Italian Localisation - Base / Localizzazione italiana di base</h2>
+        <div class="oe_span6">
+            <p align="center">
+                <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/en_US.png" alt="English"/>
             </p>
+            <p class="oe_mt16" align="justify"><p align="justify">
+This module add following data:
+</p><p align="justify">
+<ul>
+<li>Italian cities</li>
+<li>Titles</li>
+<li>Provinces (districts) and Regions</li>
+</ul>
+</p></p>
         </div>
-        <div class="oe_span6 text-center">
-            <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/it_IT.png" alt="Italiano"/>
-            <p class="oe_mt16" align="justify">Questo modulo aggiunge le seguenti funzionalit&agrave;
-            </p><p align="justify">
-- Comuni italiani (aggiornati al 2014)
-            </p><p align="justify">
-- Titoli
-            </p><p align="justify">
-- Province e regioni aggiornati
-            </p><p align="justify">
-Attenzione! Questo modulo &egrave; rimpiazza il relativo modulo OCA. Differenze rispetto al modulo OCA:
-            </p><p align="justify">
-La nazione &egrave; posta in alto, in quanto determina i successivi controlli.
-L'inserimento del CAP compila la citt&agrave; e la provincia.
-Il CAP e la provincia possono essere completati automaticamente in base ai dati inseriti.
+        <div class="oe_span6">
+            <p align="center">
+                <img src="https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/it_IT.png" alt="Italiano"/>
             </p>
+            <p class="oe_mt16" align="justify"><p align="justify">
+Questo modulo fornisce i dati precompilati di:
+</p><p align="justify">
+<ul>
+<li>Comuni italiani (aggiornati al 2014)</li>
+<li>Titoli</li>
+<li>Province e regioni aggiornati</li>
+</ul>
+</p><p align="justify">
+Inoltre gestisce alcuni automatistmi durante la compilazione del campi anagrafici.
+</p><p align="justify">
+La videata dell'anagrafica &#232; modificata come da consuetudine italiana:
+</p><p align="justify">
+CAP - Localit&#224; - Provincia
+</p><p align="justify">
+mentre nella versione originale di Odoo il CAP &#232; posto dopo la provincia come nel formato anglosassone.
+</p></p>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+        <h3 class="oe_slogan" style="color:#162832;">Usage / Utilizzo</h3>
+        <div class="oe_span12">
+<p align="justify">
+|it| Durante l'inserimento dell'anagrafica rispettare le seguenti regole:
+</p><p align="justify">
+<ul>
+<li>Inserire sempre la nazione: serve per attivare i successivi controlli sul CAP e provincia</li>
+<li>Dopo l'inserimento del CAP appare un comune e la provincia; poich&#232; esistono pi&#249; comuni con lo stesso CAP potete correggere il dato</li>
+<li>Inserire la partita IVA con il prefisso ISO della nazione: ad esempio per una p.IVA italiana digitate IT12345670017</li>
+<li>Se non si conosce il CAP inserire il comune ed il sistema completer&#224; il CAP. Attenzione! Il CAP non &#232; compilato se si utilizza una localit&#224; al posto di un comune valido.</li>
+</ul>
+</p>
         </div>
     </div>
 </section>
 
-<section class="oe_container oe_separator">
+<section class="oe_container oe_separator"/>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6" align="left">
+            <p class="oe_mt16">Authors / Autori:</p>
+            <p class="oe_mt16"><p align="justify">
+<ul>
+<li><a href="https://www.agilebg.com/">Agile Business Group sagl</a></li>
+<li><a href="http://www.innoviu.com">Innoviu srl</a></li>
+<li><a href="https://www.abstract.it">Abstract</a></li>
+<li><a href="https://www.zeroincombenze.it/">SHS-AV s.r.l.</a></li>
+</ul>
+</p></p>
+        </div>
+        <div class="oe_span6" align="left">
+            <p class="oe_mt16">Contributors / Collaboratori:</p>
+            <p class="oe_mt16"><p align="justify">
+<ul>
+<li>Davide Corio &lt;davide.corio@abstract.it&gt;</li>
+<li>Mauro Soligo &lt;mauro.soligo@katodo.com&gt;</li>
+<li>Lorenzo Battistini &lt;lorenzo.battistini@agilebg.com&gt;</li>
+<li>Roberto Onnis &lt;roberto.onnis@innoviu.com&gt;</li>
+<li>Antonio M. Vigliotti &lt;info@shs-av.com&gt;</li>
+</ul>
+</p></p>
+        </div>
+    </div>
 </section>

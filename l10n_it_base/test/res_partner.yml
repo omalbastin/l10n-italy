@@ -7,42 +7,28 @@
     assert not partner.country_id, "Wrong country code [0]!"
     assert not partner.zip, "Wrong zip [0]!"
     assert partner.city == 'Torino', "Wrong city [0]!"
-    self.fill_fields(cr, uid, id_0)
-    partner = self.browse(cr, uid, id_0)
-    # assert partner.country_id.id == ref('base.it'), "Invalid country code [0b]!"
-    assert partner.state_id.id == ref('l10n_it_base.it_TO'), "Invalid state_id [0b]!"
+    # self.fill_fields(cr, uid, id_0)
+    # partner = self.browse(cr, uid, id_0)
+    # # assert partner.country_id.id == ref('base.it'), "Invalid country code [0b]!"
+    # assert partner.state_id.id == ref('l10n_it_base.it_TO'), "Invalid state_id [0b]!"
 -
   I create partner one
 -
   !record {model: res.partner, id: partner_1}:
     name: 'Prima Infanzia s.r.l.'
     street: 'Via I Maggio, 11'
-    city: 'Maddaloni'
 -
-  Change unique record ZIP
--
-  !python {model: res.partner}: |
-    partner = self.browse(cr, uid, ref('partner_1'))
-    assert partner.city == 'Maddaloni', "Invalid city [1]!"
-    assert partner.zip == '81024', "Invalid zip code [1]!"
-    assert partner.country_id.id == ref('base.it'), "Invalid country code [1]!"
-    assert partner.state_id.id == ref('l10n_it_base.it_CE'), "Invalid state_id [1]!"
--
-  Test on_change (zip) for res.partner
+  Trigger on change
 -
   !python {model: res.partner}: |
     partner = self.browse(cr, uid, ref('partner_1'))
-    country_id = partner.country_id.id
-    zip = partner.zip
-    city = partner.city
-    state_id = partner.state_id.id
-    vals = self.on_change_zip(cr, uid, [ref('partner_1')], country_id, '20022', city, state_id)['value']
-    self.write(cr, uid, [ref('partner_1')], vals)
-    partner = self.browse(cr, uid, ref('partner_1'))
-    assert partner.city == 'Castano Primo', "Invalid city change [1b]!"
-    assert partner.zip == '20022', "Invalid zip code change [1b]!"
-    assert partner.country_id.id == ref('base.it'), "Invalid country code change [1b]!"
-    assert partner.state_id.id == ref('l10n_it_base.it_MI'), "Invalid state_id change [1b]!"
+    values = {'city': 'Maddaloni'}
+    field_onchange = {'city': 'onchange_city'}
+    res = partner.onchange(values, 'city', field_onchange)
+    # assert res['value']['city'] == 'Maddaloni', "Invalid city [1]!"
+    assert res['value'].get('zip') == '81024', "Invalid zip code [1]!"
+    # assert partner.country_id.id == ref('base.it'), "Invalid country code [1]!"
+    assert res['value'].get('state_id') == ref('l10n_it_base.it_CE'), "Invalid state_id [1]!"
 -
   I create partner two
 -
@@ -50,21 +36,6 @@
     name: 'Secondamano s.r.l.'
     zip: '10060'
     city: 'San Secondo'
--
-  Test on_change (city) for res.partner
--
-  !python {model: res.partner}: |
-    partner = self.browse(cr, uid, ref('partner_2'))
-    country_id = False
-    zip = partner.zip
-    city = partner.city
-    assert partner.city == 'San Secondo', "Invalid city[2]!"
-    state_id = False
-    vals = self.on_change_city(cr, uid, [ref('partner_2')], country_id, zip, 'S. Secondo', state_id)['value']
-    self.write(cr, uid, [ref('partner_2')], vals)
-    partner = self.browse(cr, uid, ref('partner_2'))
-    assert partner.city == 'San Secondo di Pinerolo', "Invalid city rewritten [2]!"
-    assert partner.state_id.id == ref('l10n_it_base.it_TO'), "Invalid state_id [2]!"
 -
   I create partner three
 -
@@ -80,21 +51,6 @@
     partner = self.browse(cr, uid, ref('partner_3'))
     assert partner.city == 'Terzo', "Invalid city [3]!"
     assert partner.zip == '15010', "Invalid zip [3]!"
--
-  Test on_change (zip multizone) for res.partner
--
-  !python {model: res.partner}: |
-    partner = self.browse(cr, uid, ref('partner_3'))
-    country_id = partner.country_id.id
-    zip = partner.zip
-    city = partner.city
-    state_id = partner.state_id.id
-    vals = self.on_change_zip(cr, uid, [ref('partner_3')], country_id, '15121', city, state_id)['value']
-    assert vals['zip'] == '15121', "Invalid zip on change [3b]!"
-    assert vals['city'] == 'Alessandria', "Invalid city on change [3b]!"
-    vals = self.on_change_zip(cr, uid, [ref('partner_3')], country_id, '10121', city, state_id)['value']
-    assert vals['zip'] == '10121', "Invalid zip on change [3b]!"
-    assert vals['city'] == 'Torino', "Invalid city on change [3b]!"
 -
   I create partner four
 -

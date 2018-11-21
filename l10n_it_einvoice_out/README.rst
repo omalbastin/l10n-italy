@@ -1,18 +1,23 @@
-|Maturity| |Build Status| |license gpl| |Coverage Status| |Codecov Status| |OCA project| |Tech Doc| |Help| |Try Me|
-
-.. |icon| image:: https://raw.githubusercontent.com/Odoo-Italia-Associazione/l10n-italy/8.0/l10n_it_einvoice_out/static/description/icon.png
 
 ==================================================
 |icon| Italian Localization - FatturaPA - Emission
 ==================================================
 
+
+**Electronic invoices emission**
+
+.. |icon| image:: https://raw.githubusercontent.com/Odoo-Italia-Associazione/l10n-italy/8.0/l10n_it_einvoice_out/static/description/icon.png
+
+|Maturity| |Build Status| |Coverage Status| |Codecov Status| |license gpl| |Tech Doc| |Help| |Try Me|
+
 .. contents::
 
 
-|en|
-
-EInvoice + FatturaPA
+Overview / Panoramica
 =====================
+
+|en| EInvoice + FatturaPA
+====================
 
 This module allows you to generate the fatturaPA XML file version 1.2
 which will be sent to the SdI (Exchange System by Italian Tax Authority)
@@ -24,11 +29,10 @@ http://www.fatturapa.gov.it/export/fatturazione/it/normativa/norme.htm
 |halt| Do not use this module on production environment: it is an aplha release
 subjected to update.
 
+|
 
-|it|
-
-Fattura Elettronica + FatturaPA
-================================
+|it| Fattura Elettronica + FatturaPA
+===============================
 
 Questo modulo permette di generare il file xml della fatturaPA versione 1.2
 da trasmettere al sistema di interscambio SdI.
@@ -51,8 +55,13 @@ l'ultimo autore: Antonio M. Vigliotti <antoniomaria.vigliotti@gmail.com>.
 |halt| Non utilizzare ancora questo modulo in produzione: alpha release soggetta
 ad ulteriori modifiche
 
+|
+
+Features / Caratteristiche
+--------------------------
+
 Features / Funzioni
---------------------
+-------------------
 
 +--------------------------------------+----------+----------------------------------------------+
 | Feature / Funzione                   |  Status  | Notes / Note                                 |
@@ -67,8 +76,52 @@ Features / Funzioni
 +--------------------------------------+----------+----------------------------------------------+
 
 
+|
+|
+
+Certifications / Certificazioni
+-------------------------------
+
+Certifications / Certificazioni
+-------------------------------
+
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
+| Logo                 | Ente/Certificato                                                                                                                                                                                                  | Data inizio   | Da fine      | Note                                         |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
+| |xml\_schema|        | `ISO + Agenzia delle Entrate <http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/>`__                             | 01-06-2017    | 31-12-2018   | Validazione contro schema xml                |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
+| |FatturaPA|          | `FatturaPA <https://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/?page=schedecomunicazioni/>`__  | 01-06-2017    | 31-12-2018   | Controllo tramite sito Agenzia delle Entrate |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
+
+
+|
+
+Usage / Utilizzo
+----------------
+
+Usage / Uso
+===========
+
+|menu| Configurazione > Configurazione > Contabilità > Fattura PA |do_right| Impostare i vari parametri
+|menu| Contabilità > Configurazione > Sezionali > Sezionali |do_right| Impostare sezionale fattura elettronica
+|menu| Contabilità > Configurazione > Imposte > Imposte |do_right| Impostare natura codici IVA
+|menu| Contabilità > Configurazione > Management > Termini di pagamento |do_right| Collegare i termini di pagamento con i relativi termini fiscali
+|menu| Contabilità > Clienti > Clienti |do_right| Impostare Codice Destinatario o PEC o IPA, nazione, partita IVA, codice fiscale
+|menu| Contabilità > Configurazione > Contabilità > Posizioni fiscali |do_right| Collegare posizioni fiscali con regimi fiscali
+
+Per consultazione (non modificare):
+
+|menu| Contabilità > Configurazione > Contabilità > Definizioni Agenzia delle Entrate > Natura dell'IVA
+|menu| Contabilità > Configurazione > Contabilità > Definizioni Agenzia delle Entrate > Tipi Fattura
+
+
+|
+
+OCA comparation / Confronto con OCA
+-----------------------------------
+
 OCA Differences / Differenze da OCA
-------------------------------------
+-----------------------------------
 
 +--------------------------------------+-------------------------+-------------------------+--------------------------------+
 | Description / Descrizione            | Odoo Italia             | OCA                     | Notes / Note                   |
@@ -85,24 +138,26 @@ OCA Differences / Differenze da OCA
 +--------------------------------------+-------------------------+-------------------------+--------------------------------+
 
 
-Certifications / Certificazioni
---------------------------------
+|
+|
 
-+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
-| Logo                 | Ente/Certificato                                                                                                                                                                                                  | Data inizio   | Da fine      | Note                                         |
-+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
-| |xml\_schema|        | `ISO + Agenzia delle Entrate <http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/>`__                             | 01-06-2017    | 31-12-2018   | Validazione contro schema xml                |
-+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
-| |FatturaPA|          | `FatturaPA <https://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Schede/Comunicazioni/Fatture+e+corrispettivi/Fatture+e+corrispettivi+ST/ST+invio+di+fatturazione+elettronica/?page=schedecomunicazioni/>`__  | 01-06-2017    | 31-12-2018   | Controllo tramite sito Agenzia delle Entrate |
-+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+----------------------------------------------+
+Getting started / Come iniziare
+===============================
+
+|Try Me|
 
 
+Prerequisites / Prerequisiti
+----------------------------
 
-|en|
 
+* python
+* postgresql 9.2+
+
+|
 
 Installation / Installazione
-=============================
+----------------------------
 
 +---------------------------------+------------------------------------------+
 | |en|                            | |it|                                     |
@@ -111,16 +166,14 @@ Installation / Installazione
 | example to remember what        | distribuzioni Linux CentOS 7, Ubuntu 14+ |
 | you have to do on Linux.        | e Debian 8+                              |
 |                                 |                                          |
-| Installation is based on:       | L'installazione è basata su:             |
+| Installation is built with:     | L'installazione è costruita con:         |
 +---------------------------------+------------------------------------------+
 | `Zeroincombenze Tools <https://github.com/zeroincombenze/tools>`__         |
 +---------------------------------+------------------------------------------+
-| Suggested deployment is         | Posizione suggerita per l'installazione: |
+| Suggested deployment is:        | Posizione suggerita per l'installazione: |
 +---------------------------------+------------------------------------------+
-| **/opt/odoo/8.0/l10n-italy/**                                              |
+| /opt/odoo/8.0/l10n-italy/                                                  |
 +----------------------------------------------------------------------------+
-
-|
 
 ::
 
@@ -135,22 +188,15 @@ Installation / Installazione
     done
     sudo manage_odoo requirements -b 8.0 -vsy -o /opt/odoo/8.0
 
+From UI: go to:
+
+* |menu| Setting > Modules > Update Modules List
+* |menu| Setting > Local Modules |right_do| Select **l10n_it_einvoice_out** > Install
 
 |
 
-From UI: go to:
-
-|menu| Setting > Modules > Update Modules List
-
-|menu| Setting > Local Modules |right_do| Select **l10n_it_einvoice_out** > Install
-
-|warning| If your Odoo instance crashes, you can do following instruction
-to recover installation status:
-
-``run_odoo_debug 8.0 -um l10n_it_einvoice_out -s -d MYDB``
-
 Upgrade / Aggiornamento
-------------------------
+-----------------------
 
 +---------------------------------+------------------------------------------+
 | |en|                            | |it|                                     |
@@ -162,44 +208,29 @@ Upgrade / Aggiornamento
 
 ::
 
-    cd /opt/odoo/8.0/l10n-italy/
-    git pull origin 8.0
+    odoo_install_repository l10n-italy -b 8.0 -O oia -U
     # Adjust following statements as per your system
     sudo systemctl restart odoo
 
+From UI: go to:
+
+* |menu| Setting > Modules > Update Modules List
+* |menu| Setting > Local Modules |right_do| Select **l10n_it_einvoice_out** > Update
+
+|
+
+Support / Supporto
+------------------
 
 
+|Odoo Italia Associazione| This module is maintained by the Odoo Italia Associazione and free support is supplied through its `forum <https://odoo-italia.org/index.php/kunena/recente>`__
 
 
-Usage / Uso
-============
+|
+|
 
-|menu| Configurazione > Configurazione > Contabilità > Fattura PA |do_right| Impostare i vari parametri
-|menu| Contabilità > Configurazione > Sezionali > Sezionali |do_right| Impostare sezionale fattura elettronica
-|menu| Contabilità > Configurazione > Imposte > Imposte |do_right| Impostare natura codici IVA
-|menu| Contabilità > Configurazione > Management > Termini di pagamento |do_right| Collegare i termini di pagamento con i relativi termini fiscali
-|menu| Contabilità > Clienti > Clienti |do_right| Impostare Codice Destinatario o PEC o IPA, nazione, partita IVA, codice fiscale
-|menu| Contabilità > Configurazione > Contabilità > Posizioni fiscali |do_right| Collegare posizioni fiscali con regimi fiscali
-
-Per consultazione (non modificare):
-
-|menu| Contabilità > Configurazione > Contabilità > Definizioni Agenzia delle Entrate > Natura dell'IVA
-|menu| Contabilità > Configurazione > Contabilità > Definizioni Agenzia delle Entrate > Tipi Fattura
-
-
-
-
-Known issues / Roadmap
-=======================
-
-|warning| Questo modulo rimpiazza il modulo OCA. Leggete attentamente il
-paragrafo relativo alle funzionalità e differenze.
-
-
-
-
-Issue Tracker
-==============
+Get involved / Ci mettiamo in gioco
+===================================
 
 Bug reports are welcome! You can use the issue tracker to report bugs,
 and/or submit pull requests on `GitHub Issues
@@ -207,32 +238,37 @@ and/or submit pull requests on `GitHub Issues
 
 In case of trouble, please check there if your issue has already been reported.
 
-
 Proposals for enhancement
---------------------------
+-------------------------
 
-If you have a proposal to change this module, you may want to send an email to
-<moderatore@odoo-italia.org> for initial feedback.
+
+If you have a proposal to change this module, you may want to send an email to <moderatore@odoo-italia.org> for initial feedback.
 An Enhancement Proposal may be submitted if your idea gains ground.
 
+|
+|
+
+Credits / Titoli di coda
+========================
+
+Copyright
+---------
+
+Odoo is a trademark of `Odoo S.A. <https://www.odoo.com/>`__ (formerly OpenERP)
 
 
 
-
-Credits / Riconoscimenti
-=========================
+|
 
 Authors / Autori
------------------
-
+----------------
 
 * `Agile Business Group sagl <https://www.agilebg.com/>`__
 * `Innoviu srl <http://www.innoviu.com>`__
 * `SHS-AV s.r.l. <https://www.zeroincombenze.it/>`__
 
-Contributors / Contributi
---------------------------
-
+Contributors / Collaboratori
+----------------------------
 
 * Davide Corio <davide.corio@abstract.it>
 * Roberto Onnis <roberto.onnis@innoviu.com>
@@ -241,45 +277,31 @@ Contributors / Contributi
 * Alex Comba <alex.comba@agilebg.com>
 * Antonio Maria Vigliotti <antoniomaria.vigliotti@gmail.com>
 
-Maintainers / Manutezione
---------------------------
-
-|Odoo Italia Associazione|
-
-This module is maintained by the Odoo Italia Associazione.
-
-To contribute to this module, please visit https://odoo-italia.org/.
-
-
+|
 
 ----------------
 
-**Odoo** is a trademark of `Odoo S.A. <https://www.odoo.com/>`__
-(formerly OpenERP)
 
-**OCA**, or the `Odoo Community Association <http://odoo-community.org/>`__,
-is a nonprofit organization whose mission is to support
-the collaborative development of Odoo features and promote its widespread use.
+|en| **Odoo Italia Associazione**, or the `Associazione Odoo Italia <https://www.odoo-italia.org/>`__ is the nonprofit Italian Community Association born in 2011, whose mission is promote use of Odoo to cover Italian law and markeplace.
+Since 2017 Odoo Italia Associazione issues modules for Italian localization developed by OCA and others not released under `Odoo Proprietary License <https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html>`__
 
-**Odoo Italia Associazione**, or the `Associazione Odoo Italia <https://www.odoo-italia.org/>`__
-is the nonprofit Italian Community Association whose mission
-is to support the collaborative development of Odoo designed for Italian law and markeplace.
-Since 2017 Odoo Italia Associazione issues modules for Italian localization not developed by OCA
-or available only with `Odoo Proprietary License <https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html>`__
-Odoo Italia Associazione distributes code under `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__
-or `LGPL <https://www.gnu.org/licenses/lgpl.html>`__ free license.
+Odoo Italia Associazione distributes code under `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__ or `LGPL <https://www.gnu.org/licenses/lgpl.html>`__ free licenses.
 
-`Odoo Italia Associazione <https://www.odoo-italia.org/>`__ è un'Associazione senza fine di lucro
-che dal 2017 rilascia moduli per la localizzazione italiana non sviluppati da OCA
-o disponibili solo con `Odoo Proprietary License <https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html>`__
+Read carefully published README for more info about authors.
 
-Odoo Italia Associazione distribuisce il codice esclusivamente con licenza `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__
-o `LGPL <https://www.gnu.org/licenses/lgpl.html>`__
+|it| `Odoo Italia Associazione <https://www.odoo-italia.org/>`__ è un'Associazione senza fine di lucro, nata nel 2011 che dal 2017 rilascia moduli per la localizzazione italiana sviluppati da OCA o da terze parti che non siano rilasciati con `Odoo Proprietary License <https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html>`__
+
+Odoo Italia Associazione distribuisce il codice esclusivamente con licenze `AGPL <https://www.gnu.org/licenses/agpl-3.0.html>`__ o `LGPL <https://www.gnu.org/licenses/lgpl.html>`__
+
+Leggere con attenzione i file README per maggiori informazioni sugli autori.
+
+
+|chat_with_us|
 
 
 |
 
-Last Update / Ultimo aggiornamento: 2018-10-25
+Last Update / Ultimo aggiornamento: 2018-11-21
 
 .. |Maturity| image:: https://img.shields.io/badge/maturity-Alfa-red.png
     :target: https://odoo-community.org/page/development-status
@@ -290,6 +312,9 @@ Last Update / Ultimo aggiornamento: 2018-10-25
 .. |license gpl| image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
+.. |license opl| image:: https://img.shields.io/badge/licence-OPL-7379c3.svg
+    :target: https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html
+    :alt: License: OPL
 .. |Coverage Status| image:: https://coveralls.io/repos/github/Odoo-Italia-Associazione/l10n-italy/badge.svg?branch=8.0
     :target: https://coveralls.io/github/Odoo-Italia-Associazione/l10n-italy?branch=8.0
     :alt: Coverage
@@ -308,12 +333,15 @@ Last Update / Ultimo aggiornamento: 2018-10-25
 .. |Try Me| image:: https://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-try-it-8.svg
     :target: https://odoo8.odoo-italia.org
     :alt: Try Me
-.. |OCA Codecov Status| image:: badge-oca-codecov
-    :target: oca-codecov-URL
+.. |OCA Codecov Status| image:: Unknown badge-oca-codecov
+    :target: Unknown oca-codecov-URL
     :alt: Codecov
 .. |Odoo Italia Associazione| image:: https://www.odoo-italia.org/images/Immagini/Odoo%20Italia%20-%20126x56.png
    :target: https://odoo-italia.org
    :alt: Odoo Italia Associazione
+.. |Zeroincombenze| image:: https://avatars0.githubusercontent.com/u/6972555?s=460&v=4
+   :target: https://www.zeroincombenze.it/
+   :alt: Zeroincombenze
 .. |en| image:: https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/en_US.png
    :target: https://www.facebook.com/groups/openerp.italia/
 .. |it| image:: https://raw.githubusercontent.com/zeroincombenze/grymb/master/flags/it_IT.png
@@ -334,5 +362,5 @@ Last Update / Ultimo aggiornamento: 2018-10-25
    :target: https://raw.githubusercontent.com/zeroincombenze/grymbcertificates/ade/scope/DesktopTelematico.md
 .. |FatturaPA| image:: https://raw.githubusercontent.com/zeroincombenze/grymb/master/certificates/ade/icons/fatturapa.png
    :target: https://raw.githubusercontent.com/zeroincombenze/grymbcertificates/ade/scope/fatturapa.md
-
-
+.. |chat_with_us| image:: https://www.shs-av.com/wp-content/chat_with_us.gif
+   :target: https://gitter.im/odoo_italia/development

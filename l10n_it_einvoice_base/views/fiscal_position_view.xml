@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
+<data>
 
     <record id="view_partner_regime_fiscale_form" model="ir.ui.view">
         <field name="name">partner.regime.fiscale.form</field>
@@ -12,6 +13,7 @@
         </field>
     </record>
 
-</odoo>
+</data>
+</openerp>
 
 

@@ -13,14 +13,14 @@ class AccountFiscalPosition(models.Model):
     _inherit = 'account.fiscal.position'
 
     regime_fiscale = fields.Many2one(
-        'fatturapa.fiscal_position', string='Regime Fiscale')
+        'fatturapa.fiscal_position', string='Tax Regime')
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
     # 1.2.6 RiferimentoAmministrazione
-    pa_partner_code = fields.Char('PA Code for partner', size=20)
+    pa_partner_code = fields.Char('PA partner reference', size=20)
     # 1.2.1.4
     register = fields.Char('Professional Register', size=60)
     # 1.2.1.5

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 2010-2013, Odoo Italian Community
-# Copyright 2014-2018, Associazione Odoo Italia <https://odoo-italia.org>
+# Copyright 2010-18 - Associazione Odoo Italia <https://odoo-italia.org>
+# Copyright 2018-19 - SHS-AV s.r.l. <https://www.zeroincombenze.it>
 #
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #

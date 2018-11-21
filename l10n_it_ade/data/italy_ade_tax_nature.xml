@@ -5,7 +5,7 @@
     <record model="italy.ade.tax.nature" id="n1">
         <field name="code">N1</field>
         <field name="name">Escluse ex art. 15</field>
-        <field name="help">Escluso base imponibile: interessi moratori, beni ceduti a titolo di sconto o abbuono, rimborsi di anticipazioni, imballi a spesa concordata, rivalse (es.  artt. 2, 3, 5, 13, 15)</field>
+        <field name="help">Escluso base imponibile: interessi moratori, beni ceduti a titolo di sconto o abbuono, rimborsi di anticipazioni, imballi a spesa concordata, rivalse (es. artt. 2, 3, 5, 13, 15)</field>
         <field name="active">True</field>
     </record>
     <record model="italy.ade.tax.nature" id="n2">
@@ -34,14 +34,14 @@
     </record>
     <record model="italy.ade.tax.nature" id="n6">
         <field name="code">N6</field>
-        <field name="name">Inversione contabile  (acq. in reverse charge)</field>
+        <field name="name">Inversione contabile (acq. in reverse charge)</field>
         <field name="help">IVA assolta del fornitore causa inversione contabile (per le operazioni in reverse charge ovvero nei casi di autofatturazione per acquisti extra UE di servizi ovvero per importazioni di beni nei soli casi previsti)(es. Artt. 74 c7 e c8, 17 c2 e c6, 38 e 40)</field>
         <field name="active">True</field>
     </record>
     <record model="italy.ade.tax.nature" id="n7">
         <field name="code">N7</field>
         <field name="name">IVA assolta in altro stato UE</field>
-        <field name="help">IVA per operazione con soggetto in un altro stato UE (vendite a distanza ex art. 40 c. 3 e 4 e art. 41 c. 1 lett. b,  DL 331/93; prestazione di servizi di telecomunicazioni, tele-radiodiffusione ed elettronici ex art. 7-sexies lett. f, g, art. 74-sexies DPR 633/72)</field>
+        <field name="help">IVA per operazione con soggetto in un altro stato UE (vendite a distanza ex art. 40 c. 3 e 4 e art. 41 c. 1 lett. b, DL 331/93; prestazione di servizi di telecomunicazioni, tele-radiodiffusione ed elettronici ex art. 7-sexies lett. f, g, art. 74-sexies DPR 633/72)</field>
         <field name="active">True</field>
     </record>
     <record model="italy.ade.tax.nature" id="fc">
@@ -53,3 +53,4 @@
 
 </data>
 </openerp>
+

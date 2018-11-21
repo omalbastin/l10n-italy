@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
+<data>
 
     <record id="view_regime_fiscale_tree" model="ir.ui.view">
         <field name="name">view.fiscal.position.tree</field>
@@ -35,4 +36,6 @@
               action="action_ade_regime_fiscale" parent="l10n_it_ade.menu_ade"
               groups="account.group_account_manager" sequence="45"/>
 
-</odoo>
+</data>
+</openerp>
+

@@ -18,7 +18,7 @@ from lxml import etree
 
 import openerp.release as release
 import openerp.tests.common as test_common
-from openerp import workflow
+import netsvc
 from openerp.modules.module import get_module_resource
 
 
@@ -63,15 +63,10 @@ class TestFatturaPAXMLValidation(test_common.SingleTransactionCase):
         return self.env612(model).create(values).id
 
     def workflow612(self, model, action, id):
-        if int(release.major_version.split('.')[0]) < 8:
-            wf_service = netsvc.LocalService("workflow")
-            wf_service.trg_validate(
-                self.uid, model, id, action, self.cr
-            )
-        else:
-            workflow.trg_validate(
-                self.uid, model, id, action, self.cr
-            )
+        wf_service = netsvc.LocalService("workflow")
+        wf_service.trg_validate(
+            self.uid, model, id, action, self.cr
+        )
 
     def getFilePath(self, filepath):
         with open(filepath) as test_data:

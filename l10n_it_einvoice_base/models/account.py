@@ -15,6 +15,11 @@ RELATED_DOCUMENT_TYPES = {
     'reception': 'DatiRicezione',
     'invoice': 'DatiFattureCollegate',
 }
+# TODO: Use module for classification
+EU_COUNTRIES = ['AT', 'BE', 'BG', 'CY', 'HR', 'DK', 'EE',
+                'FI', 'FR', 'DE', 'GR', 'IE', 'IT', 'LV',
+                'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'GB',
+                'CZ', 'RO', 'SK', 'SI', 'ES', 'SE', 'HU']
 
 
 class FatturapaFormat(models.Model):
@@ -24,17 +29,6 @@ class FatturapaFormat(models.Model):
 
     name = fields.Char('Description', size=128)
     code = fields.Char('Code', size=5)
-
-
-# TODO: remove
-class FatturapaDocumentType(models.Model):
-    # _position = ['2.1.1.1']
-    _name = "fatturapa.document_type"
-    _description = 'FatturaPA Document Type'
-
-    name = fields.Char('Description', size=128)
-    code = fields.Char('Code', size=4)
-
 
 #  used in fatturaPa import
 class FatturapaPaymentData(models.Model):
@@ -113,7 +107,8 @@ class WelfareFundDataLine(models.Model):
 
     name = fields.Many2one(
         'welfare.fund.type', string="Welfare Fund Type")
-    tax_nature_id = fields.Many2one('italy.ade.tax.nature', string="Non taxable nature")
+    tax_nature_id = fields.Many2one('italy.ade.tax.nature',
+                                    string="No taxable nature")
     welfare_rate_tax = fields.Float('Welfare Rate tax')
     welfare_amount_tax = fields.Float('Welfare Amount tax')
     welfare_taxable = fields.Float('Welfare Taxable')
@@ -259,15 +254,9 @@ class FaturapaSummaryData(models.Model):
     # _position = ['2.2.2']
     _name = "faturapa.summary.data"
     tax_rate = fields.Float('Tax Rate')
-    non_taxable_nature = fields.Selection([
-        ('N1', 'escluse ex art. 15'),
-        ('N2', 'non soggette'),
-        ('N3', 'non imponibili'),
-        ('N4', 'esenti'),
-        ('N5', 'regime del margine'),
-        ('N6', 'inversione contabile (reverse charge)'),
-        ('N7', 'IVA assolta in altro stato UE')
-    ], string="Non taxable nature")
+    non_taxable_nature = fields.Many2one(
+        'italy.ade.tax.nature',
+        string="No taxable nature")
     incidental_charges = fields.Float('Incidental Charges')
     rounding = fields.Float('Rounding')
     amount_untaxed = fields.Float('Amount untaxed')
@@ -287,6 +276,7 @@ class FaturapaSummaryData(models.Model):
 class AccountInvoice(models.Model):
     # _position = ['2.1', '2.2', '2.3', '2.4', '2.5']
     _inherit = "account.invoice"
+    #    domain=lambda self: [('scope', '=', type)])
     protocol_number = fields.Char('Protocol Number', size=64, copy=False)
     # 1.2 -- partner_id
     # 1.3
@@ -298,12 +288,16 @@ class AccountInvoice(models.Model):
         'res.partner', string="Intermediary")
     #  1.6
     sender = fields.Selection(
-        [('CC', 'assignee / partner'), ('TZ', 'third person')], 'Sender')
+        [('CC', 'assignee / partner'),
+         ('TZ', 'third person')], 'Sender')
     # 2.1.1.1 FIXME doc_type
+    invoice_type_id = fields.Many2one(
+        'italy.ade.invoice.type', string="Document Type",)
     #  2.1.1.5
     #  2.1.1.5.1
     ftpa_withholding_type = fields.Selection(
-        [('RT01', 'Natural Person'), ('RT02', 'Legal Person')],
+        [('RT01', 'Natural Person'),
+         ('RT02', 'Legal Person')],
         'Withholding type'
     )
     #  2.1.1.5.2 withholding_amount in module
@@ -417,3 +411,34 @@ class AccountInvoice(models.Model):
              "dell'articolo 73 del DPR 633/72 (ciò consente al "
              "cedente/prestatore l'emissione nello stesso anno di più "
              "documenti aventi stesso numero)", copy=False)
+
+    @api.model
+    def default_get(self, fields):
+        res = super(AccountInvoice, self).default_get(fields)
+        if 'type' in res:
+            einv_type_model = self.env['italy.ade.invoice.type']
+            ids = einv_type_model.search(
+                [('scope', 'like', res['type'])], order='code')
+            if ids:
+                res.update({'invoice_type_id': ids[0].id})
+        return res
+
+    @api.one
+    def set_default_einvoice_type(self):
+        if not self.invoice_type_id:
+            einv_type_model = self.env['italy.ade.invoice.type']
+            scope = 'XX%'
+            if self.partner.country_id:
+                if self.partner.country_id.code == 'IT':
+                    scope = 'IT%'
+                elif self.partner.country_id.code in EU_COUNTRIES:
+                    scope = 'EU%'
+            if self.amount >= 0:
+                scope += self.type
+            else:
+                scope += self.type[0].upper() + self.type[1:]
+            ids = einv_type_model.search(
+                [('scope', 'like', scope)], order='code')
+            if ids:
+                return ids[0].id
+        return False

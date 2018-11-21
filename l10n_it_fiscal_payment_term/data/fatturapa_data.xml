@@ -105,6 +105,7 @@
         <field name="code">MP22</field>
         <field name="name">Trattenuta su somme già riscosse</field>
     </record>
+
 </data>
 </openerp>
 
