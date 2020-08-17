@@ -5,15 +5,16 @@
 [![OCA_project](http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-oca-8.svg)](https://github.com/OCA/l10n-italy/tree/8.0)
 [![Tech Doc](http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-docs-8.svg)](http://wiki.zeroincombenze.org/en/Odoo/8.0/dev)
 [![Help](http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-help-8.svg)](http://wiki.zeroincombenze.org/en/Odoo/8.0/man/FI)
-[![try it](http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-try-it-8.svg)](http://erp8.zeroincombenze.it)
+[![try it](http://www.zeroincombenze.it/wp-content/uploads/ci-ct/prd/button-try-it-8.svg)](https://erp8.zeroincombenze.it)
 
 
 [![en](https://github.com/zeroincombenze/grymb/blob/master/flags/en_US.png)](https://www.facebook.com/groups/openerp.italia/)
 
 [![icon](static/src/img/icon.png)](https://travis-ci.org/zeroincombenze)
 
-Italian Localization - Spesometro2017
-=====================================
+
+Italian Localization - Spesometro2017/18
+========================================
 
 Generate xml file for sending to Agenzia delle Entrate, kwnown as Spesometro.
 
@@ -21,13 +22,19 @@ Generate xml file for sending to Agenzia delle Entrate, kwnown as Spesometro.
 
 [![it](https://github.com/zeroincombenze/grymb/blob/master/flags/it_IT.png)](https://www.facebook.com/groups/openerp.italia/)
 
-Localizzazione Italiana - Spesometro2017
-========================================
+Localizzazione Italiana - Spesometro2017/18
+===========================================
 
 Gestisce la Comunicazione periodica IVA con l'elenco delle fatture emesse e
 ricevute e genera il file da inviare all'Agenzia delle Entrate.
-Questo obbligo è conosciuto anche come Spesometro 2017 e sostistuisce il
-precedente obbbligo chiamato Spesometro.
+Questo obbligo è conosciuto anche come Spesometro light 2018 e sostistuisce i
+precedenti obbblighi chiamati Spesometro e Spesometro 2017.
+
+Il softwware permette di operare in modalità 2017 per rigenerare eventuali file
+in formato 2017. Per eseguire questa funzione, prima di avviare Odoo eseguire
+la seguente istruzione:
+
+     export SPESOMETRO_VERSION=2.0
 
 
 ### Funzionalità & Certificati
@@ -40,10 +47,10 @@ Fatture a privati senza Partita IVA| :white_check_mark: | Necessario codice fisc
 Fatture semplificata | :white_check_mark: | Per clienti senza PI ne CF
 Fatture senza IVA | :white_check_mark: | Fatture esenti, NI, escluse, eccetera
 Escludi importi Fuori Campo IVA | :white_check_mark: | Totale fattura in Comunicazione può essere diverso da registrazione
-Escludi CAP e provincia no Italia in comunicazione | :white_check_mark: | Da nazione, oppure da partita IVA oppure Italia
-Escludi CF no Italia in comunicazione | :white_check_mark: | Da nazione, oppure da partita IVA oppure Italia
-Controlli dati anagrafici | 
-Conversione ISO-Latin1 | :white_check_mark: | Evita rifiuto partner stranieri
+Controlla CAP e provincia Italia in comunicazione | :white_check_mark: | Da nazione, oppure da partita IVA oppure Italia
+Converti CF no Italia in comunicazione | :white_check_mark: | Da nazione, oppure da partita IVA oppure Italia
+Controlli dati anagrafici | :white_check_mark: | Controlli Agenzia Entrate
+Conversione utf-8 | :white_check_mark: | Lo Spesometro 2017 richiedeva ISO-Latin1
 IVA differita | :white_check_mark: | Da codice imposte
 IVA da split-payment | :white_check_mark: | Da codice imposte
 Ignora autofatture | :white_check_mark: | Esclusione tramite sezionale
@@ -60,8 +67,9 @@ Dimensioni del file | :x: | Nessuna verifica anche futura
 
 Logo | Ente/Certificato | Data inizio | Da fine | Note
 --- | --- | --- | --- | ---
-[![xml_schema](https://github.com/zeroincombenze/grymb/blob/master/certificates/iso/icons/xml-schema.png)](https://github.com/zeroincombenze/grymb/blob/master/certificates/iso/scope/xml-schema.md) | [ISO + Agenzia delle Entrate](http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/) | 01-10-2017 | 31-12-2017 | Validazione contro schema xml
-[![xml_schema](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/icons/fatturapa.png)](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/scope/fatturapa.md) | [Agenzia delle Entrate](http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/) | 05-10-2017 | 31-12-2017 | File accettati da portale fatturaPA Agenzia delle Entrate
+[![xml_schema](https://github.com/zeroincombenze/grymb/blob/master/certificates/iso/icons/xml-schema.png)](https://github.com/zeroincombenze/grymb/blob/master/certificates/iso/scope/xml-schema.md) | [ISO + Agenzia delle Entrate](http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/) | 01-10-2017 | 31-12-2018 | Validazione contro schema xml
+[![DesktopTelematico](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/icons/DesktopTelematico.png)](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/scope/DesktopTelematico.md) | [Agenzia delle Entrate](http://www.agenziaentrate.gov.it/wps/content/nsilib/nsi/schede/comunicazioni/dati+fatture+%28c.d.+nuovo+spesometro%29/software+di+controllo+dati+fatture+%28c.d.+nuovo+spesometro%29) | 01-03-2018 | 31-12-2018 | Controllo tramite s/w Agenzia delle Entrate
+[![xml_schema](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/icons/fatturapa.png)](https://github.com/zeroincombenze/grymb/blob/master/certificates/ade/scope/fatturapa.md) | [Agenzia delle Entrate](http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/) | 05-10-2017 | 31-12-2018 | File accettati da portale fatturaPA Agenzia delle Entrate
 
 
 Installation
@@ -69,15 +77,29 @@ Installation
 
 These instruction are just an example to remember what you have to do:
 
-    pip install PyXB==1.2.4
-    pip install Unidecode
+    for pkg in unidecode codicefiscale pyxb==1.2.4; do 
+        pip install $pkg
+    done
     git clone https://github.com/zeroincombenze/l10n-italy
-    for module in l10n_it_base l10n_it_ade l10n_it_fiscalcode l10n_it_vat_communication account_invoice_entry_date; do
+    for module in l10n_it_ade l10n_it_fiscalcode account_invoice_entry_date \
+            l10n_it_vat_registries l10n_it_vat_communication ; do
         mv ODOO_DIR/l10n-italy/$module BACKUP_DIR/
         cp -R l10n-italy/$module ODOO_DIR/l10n-italy/
     sudo service odoo-server restart -i l10n_it_ade -d MYDB
 
 From UI: go to Setup > Module > Install
+[//]: # (install)
+    ODOO_DIR=/opt/odoo/oia8/l10n-italy  # here your Odoo dir
+    BACKUP_DIR=/opt/odoo/backup  # here your backup dir
+    for pkg in pyxb==1.2.4 unidecode==0.4.17; do
+        pip install $pkg
+    done
+    # Check for <l10n_it_ade l10n_it_fiscalcode account_invoice_entry_date l10n_it_vat_registries> modules
+    cd /tmp
+    git clone https://github.com/Odoo-Italia-Associazione/l10n-italy.git l10n-italy
+    mv $ODOO_DIR/l10n-italy/l10n-italy/ $BACKUP_DIR/
+    mv /tmp/l10n-italy/l10n-italy/ $ODOO_DIR/
+[//]: # (end install)
 
 
 Configuration
@@ -156,14 +178,15 @@ promote its widespread use.
 **Odoo Italia Associazione**, or the [Associazione Odoo Italia](https://www.odoo-italia.org/)
 is the nonprofit Italian Community Association whose mission
 is to support the collaborative development of Odoo designed for Italian law and markeplace.
-Since 2017, Odoo Italia Associazione replaces OCA members of Italy are developping code under Odoo Proprietary License.
-Odoo Italia Associazione distributes only code under AGPL free license.
+Since 2017 Odoo Italia Associazione issues modules for Italian localization not developed by OCA
+or available only with Odoo Proprietary License.
+Odoo Italia Associazione distributes code under [AGPL](https://www.gnu.org/licenses/agpl-3.0.html) or [LGPL](https://www.gnu.org/licenses/lgpl.html) free license.
 
 [Odoo Italia Associazione](https://www.odoo-italia.org/) è un'Associazione senza fine di lucro
-che dal 2017 sostituisce gli sviluppatori italiani di OCA che sviluppano
-con Odoo Proprietary License a pagamento.
+che dal 2017 rilascia moduli per la localizzazione italiana non sviluppati da OCA
+o disponibili solo con [Odoo Proprietary License](https://www.odoo.com/documentation/user/9.0/legal/licenses/licenses.html).
 
-Odoo Italia Associazione distribuisce il codice esclusivamente con licenza [AGPL](http://www.gnu.org/licenses/agpl-3.0.html)
+Odoo Italia Associazione distribuisce il codice esclusivamente con licenza [AGPL](https://www.gnu.org/licenses/agpl-3.0.html) o [LGPL](https://www.gnu.org/licenses/lgpl.html)
 
 [//]: # (end copyright)
 
@@ -171,3 +194,4 @@ Odoo Italia Associazione distribuisce il codice esclusivamente con licenza [AGPL
 
 [//]: # (end addons)
 
+[![chat with us](https://www.shs-av.com/wp-content/chat_with_us.gif)](https://tawk.to/85d4f6e06e68dd4e358797643fe5ee67540e408b)

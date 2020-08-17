@@ -1,0 +1,3 @@
+unidecode
+codicefiscale
+pyxb==1.2.4

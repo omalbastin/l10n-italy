@@ -177,7 +177,7 @@ xtl_spur2acc () {
     then
       echo "$ypa"						# Purchase VAT account for deductible rate
     else
-      echo ""							# No purchare VAT account -> expensive account
+      echo ""							# No purchase VAT account -> expensive account
     fi
   fi
 }

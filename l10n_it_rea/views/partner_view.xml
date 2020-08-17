@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record model="ir.ui.view" id="view_rea_partner_form">
+        <field name="name">view_rea_partner_form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <field name="credit_limit" position="after">
+                <group string="REA Registration" colspan="4">
+                    <field name="rea_office" />
+                    <field name="rea_code" />
+                    <field name="rea_capital" />
+                    <field name="rea_member_type" />
+                    <field name="rea_liquidation_state"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+    <!--
+    <record model="ir.ui.view" id="view_company_form_inherit_rea">
+        <field name="name">company.form.rea</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="company_registry" position="after">
+                <field name="rea_office" />
+                <field name="rea_code" />
+                <field name="rea_capital" />
+                <field name="rea_member_type" />
+                <field name="rea_liquidation_state"/>
+            </field>
+        </field>
+    </record>
+    -->
+
+</data>
+</openerp>
+

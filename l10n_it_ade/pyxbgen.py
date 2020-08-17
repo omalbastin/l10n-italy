@@ -8,9 +8,8 @@
 # author: Antonio M. Vigliotti - antoniomaria.vigliotti@gmail.com
 # (C) 2017-2017 by SHS-AV s.r.l. - http://www.shs-av.com - info@shs-av.com
 #
-import sys
 import os
-
+import sys
 
 __version__ = '0.1.5.2'
 
@@ -30,7 +29,7 @@ def wash_source(lines, kind):
              'rate_type_4',
              'rate_type_5',
              'rate_type_6',
-    )
+             )
     RULES_START = {
         'RateType': 'class RateType',
         'PesoType': 'class PesoType',
@@ -74,7 +73,7 @@ def wash_source(lines, kind):
                 if ((rule in RULES_START and
                         lines[lineno].startswith(RULES_START[rule])) or
                         (rule in RULES_MATCH and
-                         lines[lineno].find(RULES_MATCH[rule])  >= 0)):
+                         lines[lineno].find(RULES_MATCH[rule]) >= 0)):
                     if rule in RULES_REPLMNT:
                         src = RULES_REPLMNT[rule][0]
                         tgt = RULES_REPLMNT[rule][1]
@@ -190,8 +189,8 @@ def main(args):
         wash_source(lines, args[2])
         fd = open(args[0], 'w')
         fd.write(''.join('%s\n' % l for l in lines))
-        fd.close() 
-    except:
+        fd.close()
+    except BaseException:
         pass
 
 

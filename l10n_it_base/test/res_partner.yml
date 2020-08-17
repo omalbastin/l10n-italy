@@ -1,0 +1,87 @@
+-
+  I create partner empty
+-
+  !python {model: res.partner}: |
+    id_0 = self.create(cr, uid, {'name': 'John Doe', 'city': 'Torino'})
+    partner = self.browse(cr, uid, id_0)
+    assert not partner.country_id, "Wrong country code [0]!"
+    assert not partner.zip, "Wrong zip [0]!"
+    assert partner.city == 'Torino', "Wrong city [0]!"
+    # self.fill_fields(cr, uid, id_0)
+    # partner = self.browse(cr, uid, id_0)
+    # # assert partner.country_id.id == ref('base.it'), "Invalid country code [0b]!"
+    # assert partner.state_id.id == ref('l10n_it_base.it_TO'), "Invalid state_id [0b]!"
+-
+  I create partner one
+-
+  !record {model: res.partner, id: partner_1}:
+    name: 'Prima Infanzia s.r.l.'
+    street: 'Via I Maggio, 11'
+-
+  Trigger on change
+-
+  !python {model: res.partner}: |
+    partner = self.browse(cr, uid, ref('partner_1'))
+    values = {'city': 'Maddaloni'}
+    field_onchange = {'city': 'onchange_city'}
+    res = partner.onchange(values, 'city', field_onchange)
+    # assert res['value']['city'] == 'Maddaloni', "Invalid city [1]!"
+    assert res['value'].get('zip') == '81024', "Invalid zip code [1]!"
+    # assert partner.country_id.id == ref('base.it'), "Invalid country code [1]!"
+    assert res['value'].get('state_id') == ref('l10n_it_base.it_CE'), "Invalid state_id [1]!"
+-
+  I create partner two
+-
+  !record {model: res.partner, id: partner_2}:
+    name: 'Secondamano s.r.l.'
+    zip: '10060'
+    city: 'San Secondo'
+-
+  I create partner three
+-
+  !record {model: res.partner, id: partner_3}:
+    name: 'Ristorante Trifoglio'
+    street: 'Centro commerciale 3T'
+    vat: 'IT02345670018'
+    city: 'Terzo'
+-
+  Check for values of partner three
+-
+  !python {model: res.partner}: |
+    partner = self.browse(cr, uid, ref('partner_3'))
+    assert partner.city == 'Terzo', "Invalid city [3]!"
+    assert partner.zip == '15010', "Invalid zip [3]!"
+-
+  I create partner four
+-
+  !record {model: res.partner, id: partner_4}:
+    name: 'Quattro Cantoni s.n.c.'
+    street: 'Corso Giovanni Agnelli, 200'
+    zip: '10135'
+-
+  Check for values of partner four
+-
+  !python {model: res.partner}: |
+    partner = self.browse(cr, uid, ref('partner_4'))
+    assert partner.city == 'Torino', "Invalid city [4]!"
+    assert partner.zip == '10135', "Invalid zip code [4]!"
+    assert partner.country_id.id == ref('base.it'), "Invalid country code [4]!"
+    assert partner.state_id.id == ref('l10n_it_base.it_TO'), "Invalid state_id [4]!"
+-
+  I create partner nine (out of Italy)
+-
+  !record {model: res.partner, id: partner_9}:
+    name: 'Freie Universität Berlin'
+    street: 'Kaiserswerther Straße 16-18'
+    country_id: base.de
+    zip: '14195'
+    city: 'Berlin'
+    vat: 'DE811304768'
+-
+  Check for values of partner nine (no Italy)
+-
+  !python {model: res.partner}: |
+    partner = self.browse(cr, uid, ref('partner_9'))
+    assert partner.country_id.id == ref('base.de'), "Invalid country code [9]!"
+    assert partner.city == 'Berlin', "Invalid city [9]!"
+    assert partner.zip == '14195', "Invalid zip code [9]!"

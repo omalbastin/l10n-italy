@@ -87,7 +87,8 @@ def CreateFromDOM(node, default_namespace=None):
     return pyxb.binding.basis.element.AnyCreateFromDOM(node, default_namespace)
 
 
-# Atomic simple type: {http://www.w3.org/2000/09/xmldsig#}CryptoBinary
+# Atomic simple type:
+# {http://www.w3.org/2000/09/xmldsig#}CryptoBinary
 class CryptoBinary (pyxb.binding.datatypes.base64Binary):
 
     """An atomic simple type."""

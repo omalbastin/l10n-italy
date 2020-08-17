@@ -5,11 +5,11 @@
 #    Copyright (C) 2013-17 Associazione Odoo Italia
 #                          <http://www.odoo-italia.org>
 #    Copyright (C) 2017    Didotech srl <http://www.didotech.com>
-#    Copyright (C) 2017    SHS-AV s.r.l. <https://www.zeroincombenze.it>
+#    Copyright (C) 2017-18 SHS-AV s.r.l. <https://www.zeroincombenze.it>
 #
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #
-from openerp import models, fields
+from openerp import fields, models
 
 
 class ResCompany(models.Model):

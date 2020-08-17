@@ -6,7 +6,7 @@
 # [2017: SHS-AV s.r.l.] First version
 {
     "name": "Comunicazione periodica IVA",
-    "version": "8.0.0.1.7",
+    "version": "8.0.0.1.12",
     'category': 'Generic Modules/Accounting',
     'license': 'AGPL-3',
     "depends": [
@@ -37,7 +37,7 @@ Comunicazione IVA periodica
 Questo modulo genera in file XML da inviare all'Agenzia delle Entrate
 http://www.agenziaentrate.gov.it/wps/content/Nsilib/Nsi/Strumenti/Specifiche+tecniche/Specifiche+tecniche+comunicazioni/Fatture+e+corrispettivi+ST/
 
-Questa comunicazione è anche conosciuta come Spesometro 2017.
+Questa comunicazione è anche conosciuta come Spesometro light 2018.
 """,
     'website': 'https://odoo-italia.org',
     'data': ['views/add_period.xml',

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
-	xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v2.0" 
-	targetNamespace="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v2.0" version="1.0">
+   xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+   xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v2.0" 
+   targetNamespace="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v2.0" version="1.0">
 
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
-    
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
+
   <!-- =================================================================== -->
   <!-- ELEMENTI                                                            -->
   <!-- =================================================================== -->
@@ -14,7 +14,7 @@
       <xs:documentation>XML schema fatture emesse e ricevute ex D.Lgs. 127/205 (art.1, c.3) 2.0</xs:documentation>
     </xs:annotation>
   </xs:element>  
-  
+
   <!-- =================================================================== -->
   <!-- TIPI                                                                -->
   <!-- =================================================================== -->
@@ -26,26 +26,26 @@
 	    <xs:element name="DTR" type="DTRType" />
 	    <xs:element name="ANN" type="ANNType" />
       </xs:choice>
-      <xs:element ref ="ds:Signature" minOccurs="0" />    
+      <xs:element ref ="ds:Signature" minOccurs="0" />
     </xs:sequence>
     <xs:attribute name="versione" type="VersioneType" use="required" />
   </xs:complexType>  
-  
+
   <xs:complexType name="DatiFatturaHeaderType">
     <xs:sequence>
       <xs:element name="ProgressivoInvio" type="String10Type"      minOccurs="0" />
       <xs:element name="Dichiarante"      type="DichiaranteType"   minOccurs="0" />
       <xs:element name="IdSistema"        type="CodiceFiscaleType" minOccurs="0" />
     </xs:sequence>
-  </xs:complexType>     
-  
+  </xs:complexType>
+
   <xs:complexType name="DichiaranteType">
     <xs:sequence>
       <xs:element name="CodiceFiscale"             type="CodiceFiscaleType" />
       <xs:element name="Carica"                    type="CaricaType"        />
     </xs:sequence>
   </xs:complexType>  
-  
+
   <xs:complexType name="DTEType">
     <xs:sequence>
       <xs:element name="CedentePrestatoreDTE"      type="CedentePrestatoreDTEType"                      />
@@ -76,7 +76,7 @@
       <xs:element name="AltriDatiIdentificativi" type="AltriDatiIdentificativiNoSedeType" />
     </xs:sequence>   
   </xs:complexType>  
-  
+
   <xs:complexType name="CedentePrestatoreDTRType">
     <xs:annotation><xs:documentation>Blocco relativo ai dati del Cedente / Prestatore</xs:documentation></xs:annotation>
     <xs:sequence>
@@ -85,7 +85,7 @@
       <xs:element name="DatiFatturaBodyDTR"      type="DatiFatturaBodyDTRType"           maxOccurs="1000" />
     </xs:sequence>   
   </xs:complexType>  
-  
+
   <xs:complexType name="CessionarioCommittenteDTEType">
     <xs:annotation><xs:documentation>Blocco relativo ai dati del Cessionario / Committente</xs:documentation></xs:annotation>
     <xs:sequence>
@@ -506,3 +506,4 @@
   </xs:simpleType>
   
 </xs:schema>
+

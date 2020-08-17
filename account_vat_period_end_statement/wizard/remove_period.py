@@ -1,41 +1,47 @@
 # -*- coding: utf-8 -*-
+#    Copyright (C) 2012    Domsense s.r.l. <http://www.domsense.com>.
+#    Copyright (C) 2012-15 Agile Business Group sagl <http://www.agilebg.com>
+#    Copyright (C) 2013-15 LinkIt Spa <http://http://www.linkgroup.it>
+#    Copyright (C) 2013-18 Associazione Odoo Italia
+#                          <http://www.odoo-italia.org>
+#    Copyright (C) 2017    Didotech srl <http://www.didotech.com>
+#    Copyright (C) 2017-18 SHS-AV s.r.l. <https://www.zeroincombenze.it>
 #
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2012 Domsense s.r.l. (<http://www.domsense.com>).
-#    Copyright (C) 2012-15 Agile Business Group sagl (<http://www.agilebg.com>)
-#    Copyright (C) 2015 Associazione Odoo Italia
-#    (<http://www.odoo-italia.org>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-
-from openerp.osv import orm, fields
+from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
 
 class RemovePeriod(orm.TransientModel):
 
     def _get_period_ids(self, cr, uid, context=None):
-        statement_obj = self.pool.get('account.vat.period.end.statement')
         res = []
         if 'active_id' in context:
-            statement = statement_obj.browse(
+            statement_model = self.pool.get('account.vat.period.end.statement')
+            statement = statement_model.browse(
                 cr, uid, context['active_id'], context)
-            for period in statement.period_ids:
-                res.append((period.id, period.name))
+            type = statement.type
+            if type == 'xml':
+                for period in statement.period_ids:
+                    res.append((period.id, period.name))
+                for period in statement.e_period_ids:
+                    found = False
+                    for item in res:
+                        if period.id == item[0]:
+                            found = True
+                            break
+                    if not found:
+                        res.append((period.id, period.name))
+            elif type == 'xml2':
+                for period in statement.e_period_ids:
+                    res.append((period.id, period.name))
+            elif type == 'month':
+                for period in statement.period_ids:
+                    res.append((period.id, period.name))
+            elif type == 'year':
+                for period in statement.y_period_ids:
+                    res.append((period.id, period.name))
         return res
 
     _name = 'remove.period.from.vat.statement'
@@ -45,12 +51,33 @@ class RemovePeriod(orm.TransientModel):
             _get_period_ids, 'Period', required=True),
     }
 
-    def remove_period(self, cr, uid, ids, context=None):
+    def linkable_period(self, cr, uid, ids, context):
         if 'active_id' not in context:
             raise orm.except_orm(_('Error'), _('Current statement not found'))
+        # wizard = self.browse(cr, uid, ids, context)[0]
+        statement_model = self.pool.get('account.vat.period.end.statement')
+        type = statement_model.browse(cr, uid, context['active_id']).type
+        field = ''
+        field2 = ''
+        if type == 'xml':
+            field = 'vat_statement_id'
+            field2 = 'e_vat_statement_id'
+        elif type == 'xml2':
+            field = 'e_vat_statement_id'
+        elif type == 'month':
+            field = 'vat_statement_id'
+        elif type == 'year':
+            field = 'y_vat_statement_id'
+        return field, field2
+
+    def remove_period(self, cr, uid, ids, context=None):
+        field, field2 = self.linkable_period(cr, uid, ids, context)
+        vals = {field: False}
+        if field2:
+            vals[field2] = False
         self.pool.get('account.period').write(
             cr, uid, [int(self.browse(cr, uid, ids, context)[0].period_id)],
-            {'vat_statement_id': False}, context=context)
+            vals, context=context)
         self.pool.get('account.vat.period.end.statement').compute_amounts(
             cr, uid, [context['active_id']], context=context)
         return {

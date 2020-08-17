@@ -1,24 +1,28 @@
 # -*- coding: utf-8 -*-
-#    Copyright (C) 2014 Associazione Odoo Italia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+#    Copyright 2014-2018 Associazione Odoo Italia (<http://www.odoo-italia.org>)
+#    Copyright 2017-2018 Antonio Vigliotti <https://www.zeroincombenze.it>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 #
 import logging
 from openerp import api, fields, models
-
 
 _logger = logging.getLogger(__name__)
 try:
     import codicefiscale
 except ImportError as err:
     _logger.debug(err)
+try:
+    from six import string_types
+except ImportError as err:
+    _logger.debug(err)
 
 SPLIT_MODE = [('LF', 'Last/First'),
               ('FL', 'First/Last'),
               ('LFM', 'Last/First Middle'),
-              ('L2F', 'Last last/First'),
-              ('L2FM', 'Last last/First Middle'),
               ('FML', 'First middle/Last'),
+              ('L2F', 'Last last/First'),
               ('FL2', 'First/Last last'),
+              ('L2FM', 'Last last/First Middle'),
               ('FML2', 'First Middle/Last last')]
 
 
@@ -35,6 +39,7 @@ class ResPartner(models.Model):
             else:
                 return True
 
+    @api.multi
     def _join_lastname_particle(self, fields):
         """Join most common surname particles"""
         if len(fields) > 1:
@@ -48,8 +53,26 @@ class ResPartner(models.Model):
                     break
         return fields
 
-    def _split_last_first_name(self, cr, uid, partner=None,
-                               name=None, splitmode=None):
+    @api.multi
+    @api.depends('name', 'individual')
+    def _split_last_name(self):
+        for partner in self:
+            lastname, firstname = self._split_last_first_name(
+                partner=partner)
+            if lastname:
+                partner.lastname = lastname
+
+    @api.multi
+    @api.depends('name', 'individual')
+    def _split_first_name(self):
+        for partner in self:
+            lastname, firstname = self._split_last_first_name(
+                partner=partner)
+            if firstname:
+                partner.firstname = firstname
+
+    @api.multi
+    def _split_last_first_name(self, partner=None, name=None, splitmode=None):
         if partner:
             if not partner.individual and partner.is_company:
                 return '', ''
@@ -58,11 +81,11 @@ class ResPartner(models.Model):
                 if hasattr(partner, 'splitmode') and partner.splitmode:
                     splitmode = partner.splitmode
                 else:
-                    splitmode = self._default_splitmode(cr, uid)
+                    splitmode = self._default_splitmode()
         elif not splitmode:
-            splitmode = self._default_splitmode(cr, uid)
-        if not isinstance(name, basestring) or \
-                not isinstance(splitmode, basestring):
+            splitmode = self._default_splitmode()
+        if not isinstance(name, string_types) or \
+                not isinstance(splitmode, string_types):
             return '', ''
         f = self._join_lastname_particle(name.split(' '))
         if len(f) == 1:
@@ -90,26 +113,10 @@ class ResPartner(models.Model):
             elif splitmode[0] == 'L':
                 return '%s %s' % (f[0], f[1]), '%s %s' % (f[2], f[3])
         return '', ''
-
-    def _split_last_name(self, cr, uid, ids, fname, arg, context=None):
-        res = {}
-        for partner in self.browse(cr, uid, ids, context=context):
-            lastname, firstname = self._split_last_first_name(
-                cr, uid, partner=partner)
-            res[partner.id] = lastname
-        return res
-
-    def _split_first_name(self, cr, uid, ids, fname, arg, context=None):
-        res = {}
-        for partner in self.browse(cr, uid, ids, context=context):
-            lastname, firstname = self._split_last_first_name(
-                cr, uid, partner=partner)
-            res[partner.id] = firstname
-        return res
-
-    def _set_last_first_name(self, cr, uid, partner_id, name, value, arg,
-                             context=None):
-        return True
+    #
+    # def _set_last_first_name(self, cr, uid, partner_id, name, value, arg,
+    #                          context=None):
+    #     return True
 
     fiscalcode = fields.Char(
         'Fiscal Code', size=16, help="Italian Fiscal Code")
@@ -128,7 +135,7 @@ class ResPartner(models.Model):
                            store=True,
                            readonly=True)
     split_next = fields.Boolean(
-        'Change format name',
+        'Θ ⇔ Φ',
         default=False,
         help="Check for change first/last name format")
 
@@ -137,71 +144,61 @@ class ResPartner(models.Model):
          "The fiscal code doesn't seem to be correct.", ["fiscalcode"])
     ]
 
-    def onchange_fiscalcode(self, cr, uid, ids, fiscalcode, country_id,
-                            context=None):
+
+    @api.onchange('fiscalcode')
+    def onchange_fiscalcode(self):
         name = 'fiscalcode'
-        if fiscalcode:
-            country_model = self.pool.get('res.country')
-            if country_id and country_model.browse(
-                    cr, uid, country_id).code != 'IT':
-                return {'value': {name: fiscalcode,
-                                  'individual': True}}
-            elif len(fiscalcode) == 11:
-                res_partner_model = self.pool.get('res.partner')
-                chk = res_partner_model.simple_vat_check(
-                    cr, uid, 'it', fiscalcode)
+        if self.fiscalcode:
+            if self.country_id and self.country_id.code != 'IT':
+                self.individual = True
+            elif len(self.fiscalcode) == 11:
+                res_partner_model = self.env['res.partner']
+                chk = res_partner_model.simple_vat_check('it', self.fiscalcode)
                 if not chk:
                     return {'value': {name: False},
                             'warning': {
                         'title': 'Invalid fiscalcode!',
                         'message': 'Invalid vat number'}
                     }
-                individual = False
-            elif len(fiscalcode) != 16:
+                self.individual = False
+            elif len(self.fiscalcode) != 16:
                 return {'value': {name: False},
                         'warning': {
                     'title': 'Invalid len!',
                     'message': 'Fiscal code len must be 11 or 16'}
                 }
             else:
-                fiscalcode = fiscalcode.upper()
-                chk = codicefiscale.control_code(fiscalcode[0:15])
-                if chk != fiscalcode[15]:
-                    value = fiscalcode[0:15] + chk
+                self.individual = True
+                self.fiscalcode = self.fiscalcode.upper()
+                chk = codicefiscale.control_code(self.fiscalcode[0:15])
+                if chk != self.fiscalcode[15]:
+                    value = self.fiscalcode[0:15] + chk
                     return {'value': {name: value},
                             'warning': {
                                 'title': 'Invalid fiscalcode!',
                                 'message': 'Fiscal code could be %s' % (value)}
                             }
-                individual = True
-            return {'value': {name: fiscalcode,
-                              'individual': individual}}
-        return {'value': {'individual': False}}
+        else:
+            self.individual = False
 
-    def onchange_name(self, cr, uid, ids, name, splitmode, context=None):
+    @api.onchange('splitmode', 'name')
+    def onchange_name(self):
         lastname, firstname = self._split_last_first_name(
-            cr, uid, name=name, splitmode=splitmode)
-        res = {'value': {'firstname': firstname,
-                         'lastname': lastname,
-                         'splitmode': splitmode,
-                         'split_next': False}}
-        return res
+            name=self.name, splitmode=self.splitmode)
+        if firstname:
+            self.firstname = firstname
+        if lastname:
+            self.lastname = lastname
+        self.split_next = False
 
-    def onchange_splitmode(self, cr, uid, ids, splitmode, name,
-                           context=None):
-        lastname, firstname = self._split_last_first_name(
-            cr, uid, name=name, splitmode=splitmode)
-        res = {'value': {'firstname': firstname,
-                         'lastname': lastname,
-                         'splitmode': splitmode,
-                         'split_next': False}}
-        return res
 
-    def onchange_split_next(self, cr, uid, ids, splitmode, name, context=None):
-        i = [i for i, x in enumerate(SPLIT_MODE) if x[0] == splitmode][0]
+    @api.onchange('split_next')
+    def onchange_split_next(self):
+        i = [i for i, x in enumerate(SPLIT_MODE) if x[0] == self.splitmode][0]
         i = (i + 1) % len(SPLIT_MODE)
-        splitmode = SPLIT_MODE[i][0]
-        return self.onchange_splitmode(cr, uid, ids, splitmode, name, context)
+        self.splitmode = SPLIT_MODE[i][0]
+        self.onchange_name()
 
-    def _default_splitmode(self, cr, uid, partner=None, context=None):
+    @api.multi
+    def _default_splitmode(self):
         return 'LF'

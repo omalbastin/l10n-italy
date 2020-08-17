@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_fatturapa_payment_term_tree" model="ir.ui.view">
+        <field name="name">view.fatturapa.payment.tree</field>
+        <field name="model">fatturapa.payment_term</field>
+        <field name="arch" type="xml">
+            <tree string="Fiscal Payment Terms">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fatturapa_payment_term_form" model="ir.ui.view">
+        <field name="name">view.fatturapa.payment.form</field>
+        <field name="model">fatturapa.payment_term</field>
+        <field name="arch" type="xml">
+            <form string="Fiscal Payment Terms">
+                <group>
+                    <field name="code"/>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fatturapa_payment_term" model="ir.actions.act_window">
+        <field name="name">Fiscal Payment Terms</field>
+        <field name="res_model">fatturapa.payment_term</field>
+        <field name="view_id" ref="view_fatturapa_payment_term_tree"/>
+    </record>
+
+    <menuitem id="menu_fatturapa_payment_term" name="Fiscal Payment Terms"
+              action="action_fatturapa_payment_term" parent="l10n_it_ade.menu_ade"
+              groups="account.group_account_manager" sequence="45"/>
+
+    <record id="view_payment_term_form_fatturapa" model="ir.ui.view">
+        <field name="name">account.payment.term.fatturapa</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form"/>
+        <field name="arch" type="xml">
+            <field name="line_ids" position="after">
+                <group col="2" colspan="2">
+                    <separator colspan="2" string="Fiscal"/>
+                    <field name="fatturapa_pt_id"/>
+                    <field name="fatturapa_pm_id"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+</data>
+</openerp>
+

@@ -1,9 +1,9 @@
 id,description,chart_template_id:id,name,sequence,amount,parent_id:id,child_depend,type,account_collected_id:id,account_paid_id:id,type_tax_use,base_code_id:id,tax_code_id:id,ref_base_code_id:id,ref_tax_code_id:id,ref_base_sign,ref_tax_sign,price_include,base_sign,tax_sign
-22a,22a,l10n_chart_it_zeroincombenze,IVA 22% da acquisti,58,0.22,,False,percent,153010,153010,purchase,template_impcode_pagata_22,template_ivacode_pagata_22,template_impcode_pagata_22,template_ivacode_pagata_22,1,1,False,-1,-1
-22v,22v,l10n_chart_it_zeroincombenze,IVA 22% su vendite,58,0.22,,False,percent,260010,260010,sale,template_impcode_riscossa_22,template_ivacode_riscossa_22,template_impcode_riscossa_22,template_ivacode_riscossa_22,-1,-1,False,1,1
+22a,22a,l10n_chart_it_zeroincombenze,IVA 22% da acquisti,1,0.22,,False,percent,153010,153010,purchase,template_impcode_pagata_22,template_ivacode_pagata_22,template_impcode_pagata_22,template_ivacode_pagata_22,1,1,False,-1,-1
+22v,22v,l10n_chart_it_zeroincombenze,IVA 22% su vendite,1,0.22,,False,percent,260010,260010,sale,template_impcode_riscossa_22,template_ivacode_riscossa_22,template_impcode_riscossa_22,template_ivacode_riscossa_22,-1,-1,False,1,1
 22c,22c,l10n_chart_it_zeroincombenze,IVA 22% sosp. da Acq.,58,0.22,,False,percent,153030,153030,purchase,template_impcode_dapagare_22,template_ivacode_dapagare_22,template_impcode_dapagare_22,template_ivacode_dapagare_22,1,1,False,-1,-1
 22s,22s,l10n_chart_it_zeroincombenze,IVA 22% sosp. da Vend.,58,0.22,,False,percent,260030,260030,sale,template_impcode_sospesa_22,template_ivacode_sospesa_22,template_impcode_sospesa_22,template_ivacode_sospesa_22,-1,-1,False,1,1
-22a0,22a0,l10n_chart_it_zeroincombenze,IVA 22% indetraibile,58,0.22,,True,percent,,,purchase,template_impcode_pagata_22i,,template_impcode_pagata_22i,,1,1,False,-1,-1
+22a0,22a0,l10n_chart_it_zeroincombenze,IVA 22% indetraibile,10,0.22,,True,percent,,,purchase,template_impcode_pagata_22i,,template_impcode_pagata_22i,,1,1,False,-1,-1
 22a0a,22a0a,l10n_chart_it_zeroincombenze,IVA 22% (100% indetraibile),100,1,22a0,False,percent,,,purchase,,template_ivacode_pagata_22i,,template_ivacode_pagata_22i,1,1,False,-1,-1
 22a0b,22a0b,l10n_chart_it_zeroincombenze,IVA 22% (quota 0% detr.),200,,22a0,False,balance,153010,153010,purchase,,template_ivacode_pagata_22i,,template_ivacode_pagata_22i,1,1,False,-1,-1
 2220,2220,l10n_chart_it_zeroincombenze,IVA 22% detraibile 20%,58,0.22,,True,percent,,,purchase,template_impcode_pagata_22d20,,template_impcode_pagata_22d20,,1,1,False,-1,-1
@@ -18,8 +18,8 @@ id,description,chart_template_id:id,name,sequence,amount,parent_id:id,child_depe
 2280,2280,l10n_chart_it_zeroincombenze,IVA 22% detraibile 80%,58,0.22,,True,percent,,,purchase,template_impcode_pagata_22d80,,template_impcode_pagata_22d80,,1,1,False,-1,-1
 2280a,2280a,l10n_chart_it_zeroincombenze,IVA 22% (quota 20% indet.),100,0.20,2280,False,percent,,,purchase,,template_ivacode_pagata_22i20,,template_ivacode_pagata_22i20,1,1,False,-1,-1
 2280b,2280b,l10n_chart_it_zeroincombenze,IVA 22% (quota 80% detr.),200,,2280,False,balance,153010,153010,purchase,,template_ivacode_pagata_22d80,,template_ivacode_pagata_22d80,1,1,False,-1,-1
-4a,4a,l10n_chart_it_zeroincombenze,IVA 4% da acquisti,76,0.04,,False,percent,153010,153010,purchase,template_impcode_pagata_4,template_ivacode_pagata_4,template_impcode_pagata_4,template_ivacode_pagata_4,1,1,False,-1,-1
-4v,4v,l10n_chart_it_zeroincombenze,IVA 4% su vendite,76,0.04,,False,percent,260010,260010,sale,template_impcode_riscossa_4,template_ivacode_riscossa_4,template_impcode_riscossa_4,template_ivacode_riscossa_4,-1,-1,False,1,1
+4a,4a,l10n_chart_it_zeroincombenze,IVA 4% da acquisti,6,0.04,,False,percent,153010,153010,purchase,template_impcode_pagata_4,template_ivacode_pagata_4,template_impcode_pagata_4,template_ivacode_pagata_4,1,1,False,-1,-1
+4v,4v,l10n_chart_it_zeroincombenze,IVA 4% su vendite,6,0.04,,False,percent,260010,260010,sale,template_impcode_riscossa_4,template_ivacode_riscossa_4,template_impcode_riscossa_4,template_ivacode_riscossa_4,-1,-1,False,1,1
 4vINC,4vINC,l10n_chart_it_zeroincombenze,IVA 4% da scorporare,76,0.04,,False,percent,260010,260010,sale,template_impcode_riscossa_4,template_ivacode_riscossa_4,template_impcode_riscossa_4,template_ivacode_riscossa_4,-1,-1,True,1,1
 4a0,4a0,l10n_chart_it_zeroincombenze,IVA 4% indetraibile,76,0.04,,True,percent,,,purchase,template_impcode_pagata_4i,,template_impcode_pagata_4i,,1,1,False,-1,-1
 4a0a,4a0a,l10n_chart_it_zeroincombenze,IVA 4% (100% indetraibile),100,1,4a0,False,percent,,,purchase,,template_ivacode_pagata_4i,,template_ivacode_pagata_4i,1,1,False,-1,-1
@@ -27,8 +27,8 @@ id,description,chart_template_id:id,name,sequence,amount,parent_id:id,child_depe
 450,450,l10n_chart_it_zeroincombenze,IVA 4% detraibile 50%,76,0.04,,True,percent,,,purchase,template_impcode_pagata_4d50,,template_impcode_pagata_4d50,,1,1,False,-1,-1
 450a,450a,l10n_chart_it_zeroincombenze,IVA 4% (quota 50% indet.),100,0.50,450,False,percent,,,purchase,,template_ivacode_pagata_4i50,,template_ivacode_pagata_4i50,1,1,False,-1,-1
 450b,450b,l10n_chart_it_zeroincombenze,IVA 4% (quota 50% detr.),200,,450,False,balance,153010,153010,purchase,,template_ivacode_pagata_4d50,,template_ivacode_pagata_4d50,1,1,False,-1,-1
-10a,10a,l10n_chart_it_zeroincombenze,IVA 10% da acquisti,70,0.10,,False,percent,153010,153010,purchase,template_impcode_pagata_10,template_ivacode_pagata_10,template_impcode_pagata_10,template_ivacode_pagata_10,1,1,False,-1,-1
-10v,10v,l10n_chart_it_zeroincombenze,IVA 10% su vendite,70,0.10,,False,percent,260010,260010,sale,template_impcode_riscossa_10,template_ivacode_riscossa_10,template_impcode_riscossa_10,template_ivacode_riscossa_10,-1,-1,False,1,1
+10a,10a,l10n_chart_it_zeroincombenze,IVA 10% da acquisti,3,0.10,,False,percent,153010,153010,purchase,template_impcode_pagata_10,template_ivacode_pagata_10,template_impcode_pagata_10,template_ivacode_pagata_10,1,1,False,-1,-1
+10v,10v,l10n_chart_it_zeroincombenze,IVA 10% su vendite,3,0.10,,False,percent,260010,260010,sale,template_impcode_riscossa_10,template_ivacode_riscossa_10,template_impcode_riscossa_10,template_ivacode_riscossa_10,-1,-1,False,1,1
 10vINC,10vINC,l10n_chart_it_zeroincombenze,IVA 10% da scorporare,70,0.10,,False,percent,260010,260010,sale,template_impcode_riscossa_10,template_ivacode_riscossa_10,template_impcode_riscossa_10,template_ivacode_riscossa_10,-1,-1,True,1,1
 10a0,10a0,l10n_chart_it_zeroincombenze,IVA 10% indetraibile,70,0.10,,True,percent,,,purchase,template_impcode_pagata_10i,,template_impcode_pagata_10i,,1,1,False,-1,-1
 10a0a,10a0a,l10n_chart_it_zeroincombenze,IVA 10% (100% indetraibile),100,1,10a0,False,percent,,,purchase,,template_ivacode_pagata_10i,,template_ivacode_pagata_10i,1,1,False,-1,-1

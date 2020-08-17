@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record model="welfare.fund.type" id="0">
+        <field name="name">TC01</field>
+        <field name="description">Cassa nazionale previdenza e assistenza avvocati e procuratori legali </field>
+    </record>
+    <record model="welfare.fund.type" id="1">
+        <field name="name">TC02</field>
+        <field name="description">Cassa previdenza dottori commercialisti</field>
+    </record>
+    <record model="welfare.fund.type" id="2">
+        <field name="name">TC03</field>
+        <field name="description">Cassa previdenza e assistenza geometri</field>
+    </record>
+    <record model="welfare.fund.type" id="3">
+        <field name="name">TC04</field>
+        <field name="description">Cassa nazionale previdenza e assistenza ingegneri e architetti liberi professionisti</field>
+    </record>
+    <record model="welfare.fund.type" id="4">
+        <field name="name">TC05</field>
+        <field name="description">Cassa nazionale del notariato</field>
+    </record>
+    <record model="welfare.fund.type" id="5">
+        <field name="name">TC06</field>
+        <field name="description">Cassa nazionale previdenza e assistenza ragionieri e periti commerciali</field>
+    </record>
+    <record model="welfare.fund.type" id="6">
+        <field name="name">TC07</field>
+        <field name="description">Ente nazionale assistenza agenti e rappresentanti di commercio (ENASARCO)</field>
+    </record>
+    <record model="welfare.fund.type" id="7">
+        <field name="name">TC08</field>
+        <field name="description">Ente nazionale previdenza e assistenza consulenti del lavoro (ENPACL)</field>
+    </record>
+    <record model="welfare.fund.type" id="8">
+        <field name="name">TC09</field>
+        <field name="description">Ente nazionale previdenza e assistenza medici (ENPAM)</field>
+    </record>
+    <record model="welfare.fund.type" id="9">
+        <field name="name">TC10</field>
+        <field name="description">Ente nazionale previdenza e assistenza farmacisti (ENPAF)</field>
+    </record>
+    <record model="welfare.fund.type" id="10">
+        <field name="name">TC11</field>
+        <field name="description">Ente nazionale previdenza e assistenza veterinari (ENPAV)</field>
+    </record>
+    <record model="welfare.fund.type" id="11">
+        <field name="name">TC12</field>
+        <field name="description">Ente nazionale previdenza e assistenza impiegati dell'agricoltura (ENPAIA)</field>
+    </record>
+    <record model="welfare.fund.type" id="12">
+        <field name="name">TC13</field>
+        <field name="description">Fondo previdenza impiegati imprese di spedizione e agenzie marittime</field>
+    </record>
+    <record model="welfare.fund.type" id="13">
+        <field name="name">TC14</field>
+        <field name="description">Istituto nazionale previdenza giornalisti italiani (INPGI)</field>
+    </record>
+    <record model="welfare.fund.type" id="14">
+        <field name="name">TC15</field>
+        <field name="description">Opera nazionale assistenza orfani sanitari italiani (ONAOSI)</field>
+    </record>
+    <record model="welfare.fund.type" id="15">
+        <field name="name">TC16</field>
+        <field name="description">Cassa autonoma assistenza integrativa giornalisti italiani (CASAGIT)</field>
+    </record>
+    <record model="welfare.fund.type" id="16">
+        <field name="name">TC17</field>
+        <field name="description">Ente previdenza periti industriali e periti industriali laureati (EPPI)</field>
+    </record>
+    <record model="welfare.fund.type" id="17">
+        <field name="name">TC18</field>
+        <field name="description">Ente previdenza e assistenza pluricategoriale (EPAP)</field>
+    </record>
+    <record model="welfare.fund.type" id="18">
+        <field name="name">TC19</field>
+        <field name="description">Ente nazionale previdenza e assistenza biologi (ENPAB)</field>
+    </record>
+    <record model="welfare.fund.type" id="19">
+        <field name="name">TC20</field>
+        <field name="description">Ente nazionale previdenza e assistenza professione infermieristica (ENPAPI)</field>
+    </record>
+    <record model="welfare.fund.type" id="20">
+        <field name="name">TC21</field>
+        <field name="description">Ente nazionale previdenza e assistenza psicologi (ENPAP)</field>
+    </record>
+    <record model="welfare.fund.type" id="21">
+        <field name="name">TC22</field>
+        <field name="description">INPS</field>
+    </record>
+
+</data>
+</openerp>
+

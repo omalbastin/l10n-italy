@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_fatturapa_payment_method_tree" model="ir.ui.view">
+        <field name="name">view.fatturapa.payment.tree</field>
+        <field name="model">fatturapa.payment_method</field>
+        <field name="arch" type="xml">
+            <tree string="Fiscal Payment Methods">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fatturapa_payment_method_form" model="ir.ui.view">
+        <field name="name">view.fatturapa.payment.form</field>
+        <field name="model">fatturapa.payment_method</field>
+        <field name="arch" type="xml">
+            <form string="Fiscal Payment Methods">
+                <group>
+                    <field name="code"/>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fatturapa_payment_method" model="ir.actions.act_window">
+        <field name="name">Fiscal Payment Methods</field>
+        <field name="res_model">fatturapa.payment_method</field>
+        <field name="view_id" ref="view_fatturapa_payment_method_tree"/>
+    </record>
+
+    <menuitem id="menu_fatturapa_payment_method" name="Fiscal Payment Methods"
+              action="action_fatturapa_payment_method" parent="l10n_it_ade.menu_ade"
+              groups="account.group_account_manager" sequence="45"/>
+</data>
+</openerp>
+

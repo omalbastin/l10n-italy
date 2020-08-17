@@ -109,8 +109,6 @@ Namespace.addCategoryObject(
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoAN_Type
-
-
 class DatoAN_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice costituito da caratteri alfanumerici maiuscoli e dai caratteri: punto, virgola, apice, trattino, spazio, barra semplice, °, ^, ampersand, parentesi aperta e chiusa, doppie virgolette, barra rovesciata, la barra dritta, il più, le maiuscole accentate e la Ü. Tali caratteri non sono ammesi come primo carattere tranne: i numeri da 0 a 9, i caratteri maiuscoli da A a Z, il meno e le dopppie virgolette."""
@@ -129,8 +127,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoAN_Type', DatoAN_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoNU_Type
-
-
 class DatoNU_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica numeri naturali positivi e negativi con al massimo 16 cifre."""
@@ -151,8 +147,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoNU_Type', DatoNU_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoPC_Type
-
-
 class DatoPC_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che esprime una percentuale e dunque consente valori positivi non superiori a 100, con al massimo 2 cifre decimali. Il separatore decimale previsto è la virgola."""
@@ -174,8 +168,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoPC_Type', DatoPC_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoQU_Type
-
-
 class DatoQU_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica numeri positivi con al massimo 5 cifre decimali. La lunghezza massima prevista è di 16 caratteri, il separatore decimale previsto è la virgola."""
@@ -196,8 +188,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoQU_Type', DatoQU_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoVP_Type
-
-
 class DatoVP_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica numeri positivi con 2 cifre decimali. La lunghezza massima prevista è di 16 caratteri, il separatore decimale previsto è la virgola."""
@@ -218,8 +208,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoVP_Type', DatoVP_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoN1_Type
-
-
 class DatoN1_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica i numeri naturali da 1 a 9."""
@@ -240,8 +228,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoN1_Type', DatoN1_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoNP_Type
-
-
 class DatoNP_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica numeri naturali positivi con al massimo 16 cifre."""
@@ -259,8 +245,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoNP_Type', DatoNP_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoPI_Type
-
-
 class DatoPI_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica la partita IVA rispettandone i vincoli di struttura. """
@@ -281,8 +265,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoPI_Type', DatoPI_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoCN_Type
-
-
 class DatoCN_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un codice fiscale numerico rispettandone i vincoli di struttura."""
@@ -303,8 +285,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoCN_Type', DatoCN_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoCF_Type
-
-
 class DatoCF_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un codice fiscale provvisorio o alfanumerico rispettandone i vincoli di struttura."""
@@ -323,8 +303,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoCF_Type', DatoCF_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoCB_Type
-
-
 class DatoCB_Type (pyxb.binding.datatypes.byte):
 
     """Tipo semplice che consente esclusivamente i valori 0 e 1."""
@@ -342,8 +320,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoCB_Type', DatoCB_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoCB12_Type
-
-
 class DatoCB12_Type (pyxb.binding.datatypes.byte):
 
     """Tipo semplice che consente esclusivamente 12 caratteri con i valori 0 e 1."""
@@ -361,8 +337,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoCB12_Type', DatoCB12_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoDT_Type
-
-
 class DatoDT_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica una data nel formato ggmmaaaa. La data indicata non deve essere successiva alla data corrente."""
@@ -384,8 +358,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoDT_Type', DatoDT_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoDA_Type
-
-
 class DatoDA_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un anno nel formato aaaa. Sono ammessi anni dal 1800 al 2099."""
@@ -406,8 +378,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoDA_Type', DatoDA_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoDN_Type
-
-
 class DatoDN_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica una data nel formato ggmmaaaa."""
@@ -429,8 +399,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoDN_Type', DatoDN_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoD6_Type
-
-
 class DatoD6_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica una data nel formato mmaaaa."""
@@ -452,8 +420,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoD6_Type', DatoD6_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoEM_Type
-
-
 class DatoEM_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un elemento di tipo email"""
@@ -472,8 +438,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoEM_Type', DatoEM_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoGA_Type
-
-
 class DatoGA_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica il numero di giorni in un anno e va da 1 a 365"""
@@ -498,8 +462,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoGA_Type', DatoGA_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoTL_Type
-
-
 class DatoTL_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un elemento di tipo telefono"""
@@ -517,8 +479,6 @@ Namespace.addCategoryObject('typeBinding', 'DatoTL_Type', DatoTL_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}DatoCP_Type
-
-
 class DatoCP_Type (pyxb.binding.datatypes.string):
 
     """Tipo semplice che identifica un elemento di tipo cap"""
@@ -536,123 +496,121 @@ Namespace.addCategoryObject('typeBinding', 'DatoCP_Type', DatoCP_Type)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}ProvincieItaliane
-
-
 class ProvincieItaliane (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """
                         Elenco delle provincie italiane in vigore, valori ammessi:
 
-                                Agrigento				AG
-                                Alessandria				AL
-                                Ancona					AN
-                                Aosta   				AO
-                                Ascoli Piceno			AP
-                                L'Aquila				AQ
-                                Arezzo					AR
-                                Asti					AT
-                                Avellino				AV
-                                Bari					BA
-                                Bergamo					BG
-                                Biella					BI
-                                Belluno					BL
-                                Benevento				BN
-                                Bologna					BO
-                                Brindisi				BR
-                                Brescia					BS
-                                Barletta-Andria-Trani	BT
-                                Bolzano					BZ
-                                Cagliari				CA
-                                Campobasso				CB
-                                Caserta					CE
-                                Chieti					CH
-                                Carbonia-Iglessias		CI
-                                Caltanissetta			CL
-                                Cuneo					CN
-                                Como					CO
-                                Cremona					CR
-                                Cosenza					CS
-                                Catania					CT
-                                Catanzaro				CZ
-                                Enna					EN
-                                Forlì-Cesena			FC
-                                Ferrara					FE
-                                Foggia					FG
-                                Firenze					FI
-                                Fermo					FM
-                                Frosinone				FR
-                                Genova					GE
-                                Gorizia					GO
-                                Grosseto				GR
-                                Imperia					IM
-                                Isernia					IS
-                                Crotone					KR
-                                Lecco					LC
-                                Lecce					LE
-                                Livorno					LI
-                                Lodi					LO
-                                Latina					LT
-                                Lucca					LU
-                                Monza e Brianza			MB
-                                Macerata				MC
-                                Messina					ME
-                                Milano					MI
-                                Mantova					MN
-                                Modena					MO
-                                Massa e Carrara			MS
-                                Matera					MT
-                                Napoli					NA
-                                Novara					NO
-                                Nuoro					NU
-                                Ogliastra				OG
-                                Oristano				OR
-                                Olbia-Tempio			OT
-                                Palermo					PA
-                                Piacenza				PC
-                                Padova					PD
-                                Pescara					PE
-                                Perugia					PG
-                                Pisa					PI
-                                Pordenone				PN
-                                Prato					PO
-                                Parma					PR
-                                Pistoia					PT
-                                Pesaro e Urbino			PU
-                                Pavia					PV
-                                Potenza					PZ
-                                Ravenna					RA
-                                Reggio Calabria			RC
-                                Reggio Emilia			RE
-                                Ragusa					RG
-                                Rieti					RI
-                                Roma					RM
-                                Rimini					RN
-                                Rovigo					RO
-                                Salerno					SA
-                                iena					SI
-                                Sondrio					SO
-                                La Spezia				SP
-                                Siracusa				SR
-                                Sassari					SS
-                                Savona					SV
-                                Taranto					TA
-                                Teramo					TE
-                                Trento 					TN
-                                Torino					TO
-                                Trapani					TP
-                                Terni					TR
-                                Trieste					TS
-                                Treviso					TV
-                                Udine					UD
-                                Varese					VA
-                                Verbano-Cusio-Ossola	VB
-                                Vercelli				VC
-                                Venezia					VE
-                                Vicenza					VI
-                                Verona					VR
-                                Medio Campidano			VS
-                                Viterbo					VT
-                                Vibo Valentia			VV
+                                Agrigento                AG
+                                Alessandria                AL
+                                Ancona                    AN
+                                Aosta                   AO
+                                Ascoli Piceno            AP
+                                L'Aquila                AQ
+                                Arezzo                    AR
+                                Asti                    AT
+                                Avellino                AV
+                                Bari                    BA
+                                Bergamo                    BG
+                                Biella                    BI
+                                Belluno                    BL
+                                Benevento                BN
+                                Bologna                    BO
+                                Brindisi                BR
+                                Brescia                    BS
+                                Barletta-Andria-Trani    BT
+                                Bolzano                    BZ
+                                Cagliari                CA
+                                Campobasso                CB
+                                Caserta                    CE
+                                Chieti                    CH
+                                Carbonia-Iglessias        CI
+                                Caltanissetta            CL
+                                Cuneo                    CN
+                                Como                    CO
+                                Cremona                    CR
+                                Cosenza                    CS
+                                Catania                    CT
+                                Catanzaro                CZ
+                                Enna                    EN
+                                Forlì-Cesena            FC
+                                Ferrara                    FE
+                                Foggia                    FG
+                                Firenze                    FI
+                                Fermo                    FM
+                                Frosinone                FR
+                                Genova                    GE
+                                Gorizia                    GO
+                                Grosseto                GR
+                                Imperia                    IM
+                                Isernia                    IS
+                                Crotone                    KR
+                                Lecco                    LC
+                                Lecce                    LE
+                                Livorno                    LI
+                                Lodi                    LO
+                                Latina                    LT
+                                Lucca                    LU
+                                Monza e Brianza            MB
+                                Macerata                MC
+                                Messina                    ME
+                                Milano                    MI
+                                Mantova                    MN
+                                Modena                    MO
+                                Massa e Carrara            MS
+                                Matera                    MT
+                                Napoli                    NA
+                                Novara                    NO
+                                Nuoro                    NU
+                                Ogliastra                OG
+                                Oristano                OR
+                                Olbia-Tempio            OT
+                                Palermo                    PA
+                                Piacenza                PC
+                                Padova                    PD
+                                Pescara                    PE
+                                Perugia                    PG
+                                Pisa                    PI
+                                Pordenone                PN
+                                Prato                    PO
+                                Parma                    PR
+                                Pistoia                    PT
+                                Pesaro e Urbino            PU
+                                Pavia                    PV
+                                Potenza                    PZ
+                                Ravenna                    RA
+                                Reggio Calabria            RC
+                                Reggio Emilia            RE
+                                Ragusa                    RG
+                                Rieti                    RI
+                                Roma                    RM
+                                Rimini                    RN
+                                Rovigo                    RO
+                                Salerno                    SA
+                                iena                    SI
+                                Sondrio                    SO
+                                La Spezia                SP
+                                Siracusa                SR
+                                Sassari                    SS
+                                Savona                    SV
+                                Taranto                    TA
+                                Teramo                    TE
+                                Trento                     TN
+                                Torino                    TO
+                                Trapani                    TP
+                                Terni                    TR
+                                Trieste                    TS
+                                Treviso                    TV
+                                Udine                    UD
+                                Varese                    VA
+                                Verbano-Cusio-Ossola    VB
+                                Vercelli                VC
+                                Venezia                    VE
+                                Vicenza                    VI
+                                Verona                    VR
+                                Medio Campidano            VS
+                                Viterbo                    VT
+                                Vibo Valentia            VV
 
                         """
 
@@ -890,8 +848,6 @@ Namespace.addCategoryObject(
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}ProvincieCroate
-
-
 class ProvincieCroate (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """An atomic simple type."""
@@ -915,8 +871,6 @@ Namespace.addCategoryObject('typeBinding', 'ProvincieCroate', ProvincieCroate)
 
 # Atomic simple type:
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}Estero
-
-
 class Estero (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """An atomic simple type."""
@@ -935,8 +889,6 @@ Namespace.addCategoryObject('typeBinding', 'Estero', Estero)
 
 # Union simple type: {urn:www.agenziaentrate.gov.it:specificheTecniche:common}PR_Type
 # superclasses pyxb.binding.datatypes.anySimpleType
-
-
 class PR_Type (pyxb.binding.basis.STD_union):
 
     """Tipo semplice costituito dalle sigle delle provincie italiane in vigore."""
@@ -1068,8 +1020,6 @@ Namespace.addCategoryObject('typeBinding', 'PR_Type', PR_Type)
 
 # Union simple type: {urn:www.agenziaentrate.gov.it:specificheTecniche:common}PN_Type
 # superclasses pyxb.binding.datatypes.anySimpleType
-
-
 class PN_Type (pyxb.binding.basis.STD_union):
 
     """Tipo semplice costituito dalle sigle delle provincie italiane in vigore,  dalle sigle delle provincie croate di Fiume, Pola e Zara e dalla sigla “EE” che indica un paese estero."""
@@ -1205,8 +1155,6 @@ Namespace.addCategoryObject('typeBinding', 'PN_Type', PN_Type)
 
 # Union simple type: {urn:www.agenziaentrate.gov.it:specificheTecniche:common}PE_Type
 # superclasses pyxb.binding.datatypes.anySimpleType
-
-
 class PE_Type (pyxb.binding.basis.STD_union):
 
     """Tipo semplice costituito dalle sigle delle provincie italiane in vigore e dalla sigla “EE” che indica un paese estero."""
@@ -1340,8 +1288,6 @@ Namespace.addCategoryObject('typeBinding', 'PE_Type', PE_Type)
 # Complex type
 # {urn:www.agenziaentrate.gov.it:specificheTecniche:common}Documento_Type
 # with content type EMPTY
-
-
 class Documento_Type (pyxb.binding.basis.complexTypeDefinition):
     """Documento trasmesso"""
     _TypeDefinition = None

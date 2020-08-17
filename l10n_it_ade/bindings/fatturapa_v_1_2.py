@@ -3414,7 +3414,7 @@ Namespace.addCategoryObject(
 # with content type ELEMENT_ONLY
 class DatiBeniServiziType (pyxb.binding.basis.complexTypeDefinition):
     """
-                                Blocco relativo ai dati di Beni Servizi della Fattura	Elettronica
+                                Blocco relativo ai dati di Beni Servizi della Fattura    Elettronica
                         """
     _TypeDefinition = None
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
@@ -3504,7 +3504,7 @@ Namespace.addCategoryObject('typeBinding', 'DatiVeicoliType', DatiVeicoliType)
 # with content type ELEMENT_ONLY
 class DatiPagamentoType (pyxb.binding.basis.complexTypeDefinition):
     """
-                                Blocco relativo ai dati di Pagamento della Fattura	Elettronica
+                                Blocco relativo ai dati di Pagamento della Fattura    Elettronica
                         """
     _TypeDefinition = None
     _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY

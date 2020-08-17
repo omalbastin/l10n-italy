@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_account_invoice_filter_per_company" model="ir.ui.view">
+        <field name="name">account.invoice.filter.per.company</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/filter[@string='Period']" position="after">
+                <filter string="Company" domain="[]" context="{'group_by':'company_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</data>
+</openerp>

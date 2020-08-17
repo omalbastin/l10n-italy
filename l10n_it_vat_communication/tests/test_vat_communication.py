@@ -32,6 +32,16 @@ class TestCommunication(TransactionCase):
         # Return reference id [+8.0]
         return self.env.ref(model).id
 
+    def search789(self,  *args, **kwargs):
+        """Search record ids - Syntax search(model, *args, **kwargs)"""
+        if release.major_version in ('6.1', '7.0'):
+            # Search record ids [6.1 / 7.0]
+            model_pool = self.registry(args[0])
+            return model_pool.search(self.cr, self.uid, args[1], kwargs)
+        # Search record ids [+8.0]
+        model_pool = self.env[args[0]]
+        return model_pool.search(args[1], kwargs)._ids
+
     def write789(self, model, id, values):
         """Write existent record [7.0]"""
         if release.major_version in ('6.1', '7.0'):
@@ -76,13 +86,23 @@ class TestCommunication(TransactionCase):
         self.company_IT_id = self.create789(
             model, {'name': 'My Company S.p.A.',
                     'address': 'Via del Campo, 1',
-                    'zip': '10121',
-                    'city': 'Torino',
+                    'zip': '15100',
+                    'city': 'Alessandria',
                     'vat': COMPANY_IT_VAT,
                     })
-        # country_IT = ref789(self, 'base.it')
-        # self.write789(model, self.company_IT_id,
-        #               {'state_id': ''})
+        country_IT = self.ref789('base.it')
+        # Country state Italy shoul be loaded
+        ids = self.search789('res.country.state',
+                             [('country_id', '=', country_IT),
+                              ('code', '=', 'AL')])
+        # but 6,1 use province, so get US Alabama instead of Alessandria
+        if not ids:
+            ids = self.search789('res.country.state',
+                                 [('code', '=', 'AL')])
+        state_id_AL = ids[0]
+        self.write789(model, self.company_IT_id,
+                      {'country_id': country_IT,
+                       'state_id': state_id_AL})
 
     def test_vat_communication(self):
         self.setup_company()
